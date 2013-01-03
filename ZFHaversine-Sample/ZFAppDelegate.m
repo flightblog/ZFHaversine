@@ -1,4 +1,3 @@
-
 #import "ZFAppDelegate.h"
 #import "ZFHaversine.h"
 
@@ -13,9 +12,6 @@
     
     double latitude2 = 38.897147;
     double longitude2 = -77.043934;
-    
-    // distance should be .55 kilos
-    
     
     ZFHaversine *distance = [[ZFHaversine alloc] initWithLatitude1:latitude1
                                                         longitude1:longitude1
