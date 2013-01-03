@@ -1,6 +1,12 @@
 # ZFHaversine #
 
-Finds the distance between two GPS coordinates.
+Objective-C implementation of the Haversine formula.
+
+"The haversine formula is an equation important in navigation, giving great-circle distances between two 
+points on a sphere from their longitudes and latitudes. It is a special case of a more general formula 
+in spherical trigonometry, the law of haversines, relating the sides and angles of spherical triangles."
+
+http://en.wikipedia.org/wiki/Haversine_formula
 
 ## Usage ##
 
