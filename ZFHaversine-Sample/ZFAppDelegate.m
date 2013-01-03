@@ -7,21 +7,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-<<<<<<< HEAD
     // Nantucket Memorial Airport (KACK)
     double latitude1 = 41.253;
     double longitude1 = -70.060;
     
-    // 
+    // Block Island (KBID)
     double latitude2 = 41.168;
     double longitude2 = -71.578;
-=======
-    double latitude1 = 38.898556;
-    double longitude1 = -77.037852;
-    
-    double latitude2 = 38.897147;
-    double longitude2 = -77.043934;
->>>>>>> 3d63bc8ea761a129cd405684b07968483db5104e
     
     ZFHaversine *distance = [[ZFHaversine alloc] initWithLatitude1:latitude1
                                                         longitude1:longitude1
