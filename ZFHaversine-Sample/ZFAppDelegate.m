@@ -8,11 +8,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    double latitude1 = 38.898556;
-    double longitude1 = -77.037852;
+    // Nantucket Memorial Airport (KACK)
+    double latitude1 = 41.253;
+    double longitude1 = -70.060;
     
-    double latitude2 = 38.897147;
-    double longitude2 = -77.043934;
+    // 
+    double latitude2 = 41.168;
+    double longitude2 = -71.578;
     
     ZFHaversine *distance = [[ZFHaversine alloc] initWithLatitude1:latitude1
                                                         longitude1:longitude1
@@ -21,8 +23,8 @@
     
     NSLog(@"distance (kilos) %f", [distance kilos]);
     NSLog(@"distance (meters) %f", [distance meters]);
-    
     NSLog(@"distance (miles) %f", [distance miles]);
+    NSLog(@"distance (miles) %f", [distance nauticalMiles]);
     NSLog(@"distance (feet) %f", [distance feet]);
     
     

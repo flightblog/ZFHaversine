@@ -16,6 +16,7 @@
 - (double) kilos;
 - (double) meters;
 - (double) miles;
+- (double) nauticalMiles;
 - (double) feet;
 
 @end

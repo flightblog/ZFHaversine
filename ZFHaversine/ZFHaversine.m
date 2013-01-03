@@ -37,17 +37,23 @@ double haversineDistance(double lat1, double lon1, double lat2, double lon2){
 
 - (double) meters
 {
-    return haversineDistance(_latitude1, _longitude1, _latitude2, _longitude2)*1000;
+    return haversineDistance(_latitude1, _longitude1, _latitude2, _longitude2) * 1000;
 }
 
 - (double) miles
 {
-    return haversineDistance(_latitude1, _longitude1, _latitude2, _longitude2)*0.621371;
+    return haversineDistance(_latitude1, _longitude1, _latitude2, _longitude2) * 0.621371;
+}
+
+
+- (double) nauticalMiles
+{
+    return haversineDistance(_latitude1, _longitude1, _latitude2, _longitude2) * 0.539957;
 }
 
 - (double) feet
 {
-    return (haversineDistance(_latitude1, _longitude1, _latitude2, _longitude2)*0.621371)*5282;
+    return (haversineDistance(_latitude1, _longitude1, _latitude2, _longitude2) * 0.621371) * 5282;
 }
 
 @end
