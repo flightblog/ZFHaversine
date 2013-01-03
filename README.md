@@ -27,7 +27,7 @@ http://en.wikipedia.org/wiki/Haversine_formula
     NSLog(@"distance (miles) %f", [distance miles]);
     NSLog(@"distance (feet) %f", [distance feet]);
 
-### TODO ###
+### TODO: ###
 
 Add compass heading.
 
