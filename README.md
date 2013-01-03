@@ -1,14 +1,15 @@
-# ZFHaversine #
+## ZFHaversine ##
 
 Objective-C implementation of the Haversine formula.
 
-"The haversine formula is an equation important in navigation, giving great-circle distances between two 
+### From Wikipedia.org ###
+The haversine formula is an equation important in navigation, giving great-circle distances between two 
 points on a sphere from their longitudes and latitudes. It is a special case of a more general formula 
-in spherical trigonometry, the law of haversines, relating the sides and angles of spherical triangles."
+in spherical trigonometry, the law of haversines, relating the sides and angles of spherical triangles.
 
 http://en.wikipedia.org/wiki/Haversine_formula
 
-## Usage ##
+### Usage ###
 
     double latitude1 = 38.898556;
     double longitude1 = -77.037852;
@@ -26,7 +27,10 @@ http://en.wikipedia.org/wiki/Haversine_formula
     NSLog(@"distance (miles) %f", [distance miles]);
     NSLog(@"distance (feet) %f", [distance feet]);
 
+### TODO ###
 
-## Contact ##
+Add compass heading.
+
+### Contact ###
 
 [@flightblog](http://twitter.com/flightblog)
