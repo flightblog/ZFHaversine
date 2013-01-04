@@ -11,25 +11,30 @@ http://en.wikipedia.org/wiki/Haversine_formula
 
 ### Usage ###
 
-    double latitude1 = 38.898556;
-    double longitude1 = -77.037852;
+    // Nantucket Memorial Airport (KACK)
+    double latitude1 = 41.253;
+    double longitude1 = -70.060;
     
-    double latitude2 = 38.897147;
-    double longitude2 = -77.043934;
+    // Block Island Airport (KBID)
+    double latitude2 = 41.168;
+    double longitude2 = -71.578;
     
     ZFHaversine *distance = [[ZFHaversine alloc] initWithLatitude1:latitude1
                                                         longitude1:longitude1
                                                          latitude2:latitude2
                                                         longitude2:longitude2];
     
-    NSLog(@"distance (kilos) %f", [distance kilos]);
-    NSLog(@"distance (meters) %f", [distance meters]);
-    NSLog(@"distance (miles) %f", [distance miles]);
-    NSLog(@"distance (feet) %f", [distance feet]);
+    NSLog(@"Kilos %f", [distance kilos]);
+    NSLog(@"Miles %f", [distance miles]);
+    NSLog(@"Nautial Miles %f", [distance nauticalMiles]);
+    NSLog(@"Meters %f", [distance meters]);
+    NSLog(@"Feet %f", [distance feet]);
+    NSLog(@"Inches %f", [distance inches]);
 
 ### TODO:
 
-Add compass heading.
+* Add compass heading.
+* Create a cocoapod.
 
 ## Contact
 
