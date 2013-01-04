@@ -57,34 +57,36 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
     return d = EARTH_RADIUS_IN_KILOS * c;
 }
 
-- (NSNumber *) kilos
+- (double) kilos
 {
-    NSNumber *kilos = [[NSNumber alloc] initWithDouble:[self haversineDistance]];
-    return kilos;
+    return [self haversineDistance];
 }
 
-- (NSNumber *) meters
+- (double) meters
 {
-    NSNumber *meters = [[NSNumber alloc] initWithDouble:[self haversineDistance] * 1000];
-    return meters;
+    return [self haversineDistance] * 1000;
 }
 
-- (NSNumber *) miles
+- (double) miles
 {
-    NSNumber *miles = [[NSNumber alloc] initWithDouble:[self haversineDistance] * 0.621371];
-    return miles;
+    return [self haversineDistance]  * 0.621371;
 }
 
-- (NSNumber *) nauticalMiles
+- (double) nauticalMiles
 {
-    NSNumber *miles = [[NSNumber alloc] initWithDouble:[self haversineDistance] * 0.539957];
-    return miles;
+    return [self haversineDistance] * 0.539957;
 }
 
-- (NSNumber *) feet
+- (double) feet
 {
-    NSNumber *feet = [[NSNumber alloc] initWithDouble:[self haversineDistance] * 3280.84];
-    return feet;
+    return [self haversineDistance] * 3280.84 ;
 }
+
+
+- (double) inches
+{
+    return [self haversineDistance] * 39370.1;
+}
+
 
 @end

@@ -42,12 +42,12 @@
                                                          latitude2:latitude2
                                                         longitude2:longitude2];
     
-    NSLog(@"Kilos %@", [distance kilos]);
-    NSLog(@"Meters %@", [distance meters]);
-    NSLog(@"Miles %@", [distance miles]);
-    NSLog(@"Nautial Miles %@", [distance nauticalMiles]);
-    NSLog(@"Feet %@", [distance feet]);
-    
+    NSLog(@"Kilos %f", [distance kilos]);
+    NSLog(@"Meters %f", [distance meters]);
+    NSLog(@"Miles %f", [distance miles]);
+    NSLog(@"Nautial Miles %f", [distance nauticalMiles]);
+    NSLog(@"Feet %f", [distance feet]);
+    NSLog(@"Inches %f", [distance inches]);
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

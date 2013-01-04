@@ -34,10 +34,11 @@
               latitude2:(double)latitude2
              longitude2:(double)longitude2;
 
-- (NSNumber *) kilos;
-- (NSNumber *) meters;
-- (NSNumber *) miles;
-- (NSNumber *) nauticalMiles;
-- (NSNumber *) feet;
+- (double) kilos;
+- (double) meters;
+- (double) miles;
+- (double) nauticalMiles;
+- (double) feet;
+- (double) inches;
 
 @end
