@@ -1,4 +1,4 @@
-## ZFHaversine ##
+# ZFHaversine #
 
 Objective-C implementation of the Haversine formula.
 
@@ -27,15 +27,16 @@ http://en.wikipedia.org/wiki/Haversine_formula
     NSLog(@"distance (miles) %f", [distance miles]);
     NSLog(@"distance (feet) %f", [distance feet]);
 
-### TODO: ###
+### TODO:
 
 Add compass heading.
 
-### Contact ###
+## Contact
 
+Steve Foster (foster@flightblog.org)
 [@flightblog](http://twitter.com/flightblog)
 
-### License ###
+## License
 
 The MIT License (MIT)
 Copyright © 2013 Steve Foster <foster@flightblog.org>
