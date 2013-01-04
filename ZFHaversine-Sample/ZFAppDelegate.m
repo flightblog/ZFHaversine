@@ -33,7 +33,7 @@
     double latitude1 = 41.253;
     double longitude1 = -70.060;
     
-    // Block Island (KBID)
+    // Block Island Airport (KBID)
     double latitude2 = 41.168;
     double longitude2 = -71.578;
     
@@ -42,11 +42,11 @@
                                                          latitude2:latitude2
                                                         longitude2:longitude2];
     
-    NSLog(@"distance (kilos) %f", [distance kilos]);
-    NSLog(@"distance (meters) %f", [distance meters]);
-    NSLog(@"distance (miles) %f", [distance miles]);
-    NSLog(@"distance (miles) %f", [distance nauticalMiles]);
-    NSLog(@"distance (feet) %f", [distance feet]);
+    NSLog(@"Kilos %@", [distance kilos]);
+    NSLog(@"Meters %@", [distance meters]);
+    NSLog(@"Miles %@", [distance miles]);
+    NSLog(@"Nautial Miles %@", [distance nauticalMiles]);
+    NSLog(@"Feet %@", [distance feet]);
     
     
     self.window.backgroundColor = [UIColor whiteColor];

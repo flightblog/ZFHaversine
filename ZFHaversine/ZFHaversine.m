@@ -25,6 +25,9 @@ static const double EARTH_RADIUS_IN_KILOS = 6372.797560856;
 static const double DEGRESS_TO_RADIANS = M_PI/180.0;
 
 @implementation ZFHaversine
+{
+    NSNumber *_kilos;
+}
 
 -(id) initWithLatitude1:(double)latitude1
              longitude1:(double)longitude1
@@ -33,48 +36,55 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
 {
     self = [super init];
     if (self) {
-        self.latitude1 = latitude1;
-        self.longitude1 = longitude1;
-        self.latitude2 = latitude2;
-        self.longitude2 = longitude2;
+        _latitude1 = latitude1;
+        _longitude1 = longitude1;
+        _latitude2 = latitude2;
+        _longitude2 = longitude2;
     }
     return self;
 }
 
-double haversineDistance(double lat1, double lon1, double lat2, double lon2){
-    double dlon = (lon2 - lon1) * DEGRESS_TO_RADIANS;
-    double dlat = (lat2 - lat1) * DEGRESS_TO_RADIANS;
+
+- (double)haversineDistance
+{
+    double dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
+    double dlat = (_latitude2 - _latitude1) * DEGRESS_TO_RADIANS;
     
-    double a =  pow(sin(dlat * 0.5), 2)+ cos(lat1 * DEGRESS_TO_RADIANS) * cos(lat2 * DEGRESS_TO_RADIANS) * pow(sin(dlon * 0.5),2);
+    double a =  pow(sin(dlat * 0.5), 2)+ cos(_latitude1 * DEGRESS_TO_RADIANS) * cos(_latitude2 * DEGRESS_TO_RADIANS) * pow(sin(dlon * 0.5),2);
     double c = 2.0 * atan2(sqrt(a), sqrt(1-a));
+    double d = EARTH_RADIUS_IN_KILOS * c;
     
-    return EARTH_RADIUS_IN_KILOS * c;
+    return d = EARTH_RADIUS_IN_KILOS * c;
 }
 
-- (double) kilos
+- (NSNumber *) kilos
 {
-    return haversineDistance(_latitude1, _longitude1, _latitude2, _longitude2);
+    NSNumber *kilos = [[NSNumber alloc] initWithDouble:[self haversineDistance]];
+    return kilos;
 }
 
-- (double) meters
+- (NSNumber *) meters
 {
-    return haversineDistance(_latitude1, _longitude1, _latitude2, _longitude2) * 1000;
+    NSNumber *meters = [[NSNumber alloc] initWithDouble:[self haversineDistance] * 1000];
+    return meters;
 }
 
-- (double) miles
+- (NSNumber *) miles
 {
-    return haversineDistance(_latitude1, _longitude1, _latitude2, _longitude2) * 0.621371;
+    NSNumber *miles = [[NSNumber alloc] initWithDouble:[self haversineDistance] * 0.621371];
+    return miles;
 }
 
-
-- (double) nauticalMiles
+- (NSNumber *) nauticalMiles
 {
-    return haversineDistance(_latitude1, _longitude1, _latitude2, _longitude2) * 0.539957;
+    NSNumber *miles = [[NSNumber alloc] initWithDouble:[self haversineDistance] * 0.539957];
+    return miles;
 }
 
-- (double) feet
+- (NSNumber *) feet
 {
-    return (haversineDistance(_latitude1, _longitude1, _latitude2, _longitude2) * 0.621371) * 5282;
+    NSNumber *feet = [[NSNumber alloc] initWithDouble:[self haversineDistance] * 3280.84];
+    return feet;
 }
 
 @end
