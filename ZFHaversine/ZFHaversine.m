@@ -29,10 +29,10 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
     NSNumber *_kilos;
 }
 
--(id) initWithLatitude1:(double)latitude1
-             longitude1:(double)longitude1
-              latitude2:(double)latitude2
-             longitude2:(double)longitude2
+-(id) initWithLatitude1:(CGFloat)latitude1
+             longitude1:(CGFloat)longitude1
+              latitude2:(CGFloat)latitude2
+             longitude2:(CGFloat)longitude2
 {
     self = [super init];
     if (self) {
@@ -44,44 +44,44 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
     return self;
 }
 
-- (double) haversineDistance
+- (CGFloat) haversineDistance
 {
-    double dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
-    double dlat = (_latitude2 - _latitude1) * DEGRESS_TO_RADIANS;
+    CGFloat dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
+    CGFloat dlat = (_latitude2 - _latitude1) * DEGRESS_TO_RADIANS;
     
-    double a =  pow(sin(dlat * 0.5), 2)+ cos(_latitude1 * DEGRESS_TO_RADIANS) * cos(_latitude2 * DEGRESS_TO_RADIANS) * pow(sin(dlon * 0.5), 2);
-    double c = 2.0 * atan2(sqrt(a), sqrt(1-a));
-    double d = EARTH_RADIUS_IN_KILOS * c;
+    CGFloat a =  pow(sin(dlat * 0.5), 2)+ cos(_latitude1 * DEGRESS_TO_RADIANS) * cos(_latitude2 * DEGRESS_TO_RADIANS) * pow(sin(dlon * 0.5), 2);
+    CGFloat c = 2.0 * atan2(sqrt(a), sqrt(1-a));
+    CGFloat d = EARTH_RADIUS_IN_KILOS * c;
     
     return d = EARTH_RADIUS_IN_KILOS * c;
 }
 
-- (double) kilos
+- (CGFloat) kilos
 {
     return [self haversineDistance];
 }
 
-- (double) meters
+- (CGFloat) meters
 {
     return [self haversineDistance] * 1000;
 }
 
-- (double) miles
+- (CGFloat) miles
 {
     return [self haversineDistance]  * 0.621371;
 }
 
-- (double) nauticalMiles
+- (CGFloat) nauticalMiles
 {
     return [self haversineDistance] * 0.539957;
 }
 
-- (double) feet
+- (CGFloat) feet
 {
     return [self haversineDistance] * 3280.84 ;
 }
 
-- (double) inches
+- (CGFloat) inches
 {
     return [self haversineDistance] * 39370.1;
 }

@@ -24,21 +24,21 @@
 
 @interface ZFHaversine : NSObject
 
-@property (readonly) double latitude1;
-@property (readonly) double longitude1;
-@property (readonly) double latitude2;
-@property (readonly) double longitude2;
+@property (readonly) CGFloat latitude1;
+@property (readonly) CGFloat longitude1;
+@property (readonly) CGFloat latitude2;
+@property (readonly) CGFloat longitude2;
 
-- (id)initWithLatitude1:(double)latitude1
-             longitude1:(double)longitude1
-              latitude2:(double)latitude2
-             longitude2:(double)longitude2;
+- (id)initWithLatitude1:(CGFloat)latitude1
+             longitude1:(CGFloat)longitude1
+              latitude2:(CGFloat)latitude2
+             longitude2:(CGFloat)longitude2;
 
-- (double) kilos;
-- (double) meters;
-- (double) miles;
-- (double) nauticalMiles;
-- (double) feet;
-- (double) inches;
+- (CGFloat) kilos;
+- (CGFloat) meters;
+- (CGFloat) miles;
+- (CGFloat) nauticalMiles;
+- (CGFloat) feet;
+- (CGFloat) inches;
 
 @end
