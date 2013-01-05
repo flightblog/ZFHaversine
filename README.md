@@ -34,7 +34,6 @@ http://en.wikipedia.org/wiki/Haversine_formula
 ### TODO:
 
 * Add compass heading.
-* Create a cocoapod.
 
 ## Contact
 
