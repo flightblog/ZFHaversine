@@ -44,13 +44,12 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
     return self;
 }
 
-
-- (double)haversineDistance
+- (double) haversineDistance
 {
     double dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
     double dlat = (_latitude2 - _latitude1) * DEGRESS_TO_RADIANS;
     
-    double a =  pow(sin(dlat * 0.5), 2)+ cos(_latitude1 * DEGRESS_TO_RADIANS) * cos(_latitude2 * DEGRESS_TO_RADIANS) * pow(sin(dlon * 0.5),2);
+    double a =  pow(sin(dlat * 0.5), 2)+ cos(_latitude1 * DEGRESS_TO_RADIANS) * cos(_latitude2 * DEGRESS_TO_RADIANS) * pow(sin(dlon * 0.5), 2);
     double c = 2.0 * atan2(sqrt(a), sqrt(1-a));
     double d = EARTH_RADIUS_IN_KILOS * c;
     
@@ -81,7 +80,6 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
 {
     return [self haversineDistance] * 3280.84 ;
 }
-
 
 - (double) inches
 {
