@@ -36,12 +36,25 @@
     // Block Island Airport (KBID)
     double latitude2 = 41.168;
     double longitude2 = -71.578;
+
     
+    // alloc/init/set
+    ZFHaversine *distance = [[ZFHaversine alloc] init];
+    
+    [distance setLatitude1:latitude1];
+    [distance setLongitude1:longitude1];
+    [distance setLatitude2:latitude2];
+    [distance setLongitude2:longitude2];
+    
+    // alloc/initWith coordinates
+    /*
     ZFHaversine *distance = [[ZFHaversine alloc] initWithLatitude1:latitude1
                                                         longitude1:longitude1
                                                          latitude2:latitude2
                                                         longitude2:longitude2];
+    */
     
+    // Results
     NSLog(@"Kilos %f", [distance kilos]);
     NSLog(@"Meters %f", [distance meters]);
     NSLog(@"centimeters %f", [distance centimeters]);

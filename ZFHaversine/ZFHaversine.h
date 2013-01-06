@@ -24,10 +24,10 @@
 
 @interface ZFHaversine : NSObject
 
-@property (readonly) CGFloat latitude1;
-@property (readonly) CGFloat longitude1;
-@property (readonly) CGFloat latitude2;
-@property (readonly) CGFloat longitude2;
+@property (readwrite) CGFloat latitude1;
+@property (readwrite) CGFloat longitude1;
+@property (readwrite) CGFloat latitude2;
+@property (readwrite) CGFloat longitude2;
 
 - (id)initWithLatitude1:(CGFloat)latitude1
              longitude1:(CGFloat)longitude1

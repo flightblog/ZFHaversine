@@ -29,10 +29,22 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
     NSNumber *_kilos;
 }
 
--(id) initWithLatitude1:(CGFloat)latitude1
-             longitude1:(CGFloat)longitude1
-              latitude2:(CGFloat)latitude2
-             longitude2:(CGFloat)longitude2
+- (id) init
+{
+    self = [super init];
+    
+    _latitude1 = 0;
+    _longitude1 = 0;
+    _latitude2 = 0;
+    _longitude2 = 0;
+    
+    return self;
+}
+
+- (id) initWithLatitude1:(CGFloat)latitude1
+              longitude1:(CGFloat)longitude1
+               latitude2:(CGFloat)latitude2
+              longitude2:(CGFloat)longitude2
 {
     self = [super init];
     if (self) {
