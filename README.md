@@ -1,6 +1,6 @@
 # ZFHaversine #
 
-Objective-C implementation of the Haversine formula.
+Objective-C implementation of the Haversine formula used to find the distance between two GPS coordinates. 
 
 ### From Wikipedia.org ###
 The haversine formula is an equation important in navigation, giving great-circle distances between two 
@@ -30,6 +30,15 @@ http://en.wikipedia.org/wiki/Haversine_formula
     NSLog(@"Meters %f", [distance meters]);
     NSLog(@"Feet %f", [distance feet]);
     NSLog(@"Inches %f", [distance inches]);
+
+    Results:
+	
+    Kilos 127.368652
+    Miles 79.143188
+    Nautial Miles 68.773598
+    Meters 127368.656250
+    Feet 417876.156250
+    Inches 5014516.500000
 
 ### TODO:
 

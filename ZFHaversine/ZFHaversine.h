@@ -40,5 +40,7 @@
 - (CGFloat) nauticalMiles;
 - (CGFloat) feet;
 - (CGFloat) inches;
+- (CGFloat) centimeters;
+- (CGFloat) millimeters;
 
 @end

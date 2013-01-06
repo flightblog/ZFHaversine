@@ -66,6 +66,16 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
     return [self haversineDistance] * 1000;
 }
 
+- (CGFloat) centimeters
+{
+    return [self haversineDistance] * 10000;
+}
+
+- (CGFloat) millimeters
+{
+    return [self haversineDistance] * 100000;
+}
+
 - (CGFloat) miles
 {
     return [self haversineDistance]  * 0.621371;

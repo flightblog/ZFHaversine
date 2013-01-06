@@ -43,9 +43,13 @@
                                                         longitude2:longitude2];
     
     NSLog(@"Kilos %f", [distance kilos]);
-    NSLog(@"Miles %f", [distance miles]);
-    NSLog(@"Nautial Miles %f", [distance nauticalMiles]);
     NSLog(@"Meters %f", [distance meters]);
+    NSLog(@"centimeters %f", [distance centimeters]);
+    NSLog(@"millimeters %f", [distance millimeters]);
+
+    NSLog(@"Nautial Miles %f", [distance nauticalMiles]);
+    NSLog(@"Miles %f", [distance miles]);
+
     NSLog(@"Feet %f", [distance feet]);
     NSLog(@"Inches %f", [distance inches]);
     
