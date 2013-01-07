@@ -46,6 +46,10 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
     return self;
 }
 
+
+///////////////////
+// Distance
+
 - (CGFloat) haversineDistance
 {
     CGFloat dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
@@ -57,6 +61,15 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
     
     return d = EARTH_RADIUS_IN_KILOS * c;
 }
+
+- (CGFloat) sphericalLawOfCosinesDistance
+{
+    
+    CGFloat distance = acoshf(sinf(_latitude1) *sinf(_latitude2) + cosf(_latitude1) * cosf(_latitude2) * cosf(_longitude2 - _longitude2) * EARTH_RADIUS_IN_KILOS);
+    
+    return distance;
+}
+
 
 - (CGFloat) kilos
 {
@@ -88,4 +101,46 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
     return [self haversineDistance] * 3280.84 ;
 }
 
+
+///////////////////
+// Initial Bearing
+
+/* Java Script
+ 
+ var y = Math.sin(dLon) * Math.cos(lat2);
+ var x = Math.cos(lat1)*Math.sin(lat2) -
+ Math.sin(lat1)*Math.cos(lat2)*Math.cos(dLon);
+ var brng = Math.atan2(y, x).toDeg();
+
+*/
+
+- (CGFloat) initialBearing
+{
+    CGFloat dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
+    
+    CGFloat y = sinf(dlon) * cosf(_latitude2);
+    CGFloat x = cosf(_latitude1 * sinf(_latitude2) - sinf(_latitude1) * cosf(_latitude2) * cosf(dlon));
+ 
+    CGFloat bearing = atan2f(y, x);
+    
+    return bearing;
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

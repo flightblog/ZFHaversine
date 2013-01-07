@@ -28,7 +28,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
+    
     // Nantucket Memorial Airport (KACK)
     double latitude1 = 41.253;
     double longitude1 = -70.060;
@@ -37,7 +37,7 @@
     double latitude2 = 41.168;
     double longitude2 = -71.578;
 
-    // alloc/init/set
+    // alloc/init and set
     ZFHaversine *distance = [[ZFHaversine alloc] init];
     
     [distance setLatitude1:latitude1];
@@ -53,13 +53,21 @@
                                                         longitude2:longitude2];
     */
     
-    // Results
+    
+    //////////////////
+    // Distance
     NSLog(@"Kilos %f", [distance kilos]);
     NSLog(@"Meters %f", [distance meters]);
     NSLog(@"Nautial Miles %f", [distance nauticalMiles]);
     NSLog(@"Miles %f", [distance miles]);
     NSLog(@"Yards %f", [distance yards]);
     NSLog(@"Feet %f", [distance feet]);
+    
+    
+    ////////////////////
+    // Bearing
+    NSLog(@"Initial Bearing %f", [distance initialBearing]); // KACK to KBID should be 085
+    
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

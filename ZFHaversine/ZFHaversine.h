@@ -34,11 +34,15 @@
               latitude2:(CGFloat)latitude2
              longitude2:(CGFloat)longitude2;
 
+// Distance
 - (CGFloat) kilos;
 - (CGFloat) meters;
 - (CGFloat) nauticalMiles;
 - (CGFloat) miles;
 - (CGFloat) yards;
 - (CGFloat) feet;
+
+// Initial Bearing
+- (CGFloat) initialBearing;
 
 @end
