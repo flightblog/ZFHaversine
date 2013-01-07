@@ -23,12 +23,13 @@
 #import "ZFHaversine.h"
 static const double EARTH_RADIUS_IN_KILOS = 6372.797560856;
 static const double DEGRESS_TO_RADIANS = M_PI/180.0;
+static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 
 @implementation ZFHaversine
 
 - (id) init
 {
-    return [self initWithLatitude1:0 longitude1:0 latitude2:0 longitude2:0];
+    return [self initWithLatitude1:0 longitude1:0 latitude2:0 longitude2:0 distanceFormula:nil];
 }
 
 - (id) initWithLatitude1:(CGFloat)latitude1
@@ -44,6 +45,48 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
         _longitude2 = longitude2;
     }
     return self;
+}
+
+- (id) initWithLatitude1:(CGFloat)latitude1
+              longitude1:(CGFloat)longitude1
+               latitude2:(CGFloat)latitude2
+              longitude2:(CGFloat)longitude2
+         distanceFormula:(NSString *)distanceFormula
+{
+    self = [super init];
+    if (self) {
+        _latitude1 = latitude1;
+        _longitude1 = longitude1;
+        _latitude2 = latitude2;
+        _longitude2 = longitude2;
+        _distanceFormula = distanceFormula;
+    }
+    return self;
+}
+
+
+
+// Validates latitude and logitude coordinates. Latittude must be within -90 and 90 degrees. Longitude must be within -180 and 180.
+- (BOOL)validateCoordinates
+{
+    // Checking validity of latitude
+    if ((_latitude1 || _latitude2) > 90) {
+        NSLog(@"Latitude out of range. (A latitude not be greater then +/- 90 degrees");
+        return 0;
+    } else if ((_latitude1 || _latitude2) < -90) {
+        NSLog(@"Latitude out of range (A latitude not be greater then +/- 90 degrees");
+        return 0;
+    }
+    
+    // Checking validity of longitude
+    if ((_longitude1 || _longitude2) > 180) {
+        NSLog(@"Longitude out of range. (A longitude can not be greater then +/- 180");
+        return 0;
+    } else if ((_longitude1 || _longitude2) < -180) {
+        return 0;
+        NSLog(@"Longitude out of range. (A longitude can not be greater then +/- 180");
+    }
+    return 1;
 }
 
 
@@ -73,11 +116,20 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
 
 - (CGFloat) kilos
 {
-    return [self haversineDistance];
+    if (_distanceFormula == nil) {
+        return [self haversineDistance];
+    } else {
+        return [self sphericalLawOfCosinesDistance];
+    }
 }
 
 - (CGFloat) meters
 {
+    if ([self validateCoordinates]) {
+        NSLog(@"valid coordinates");
+    }
+    
+    
     return [self haversineDistance] * 1000;
 }
 
@@ -118,7 +170,7 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
 {
     CGFloat dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
     
-    CGFloat y = sinf(dlon) * cosf(_latitude2);
+    CGFloat y = sin(dlon) * cosf(_latitude2);
     CGFloat x = cosf(_latitude1 * sinf(_latitude2) - sinf(_latitude1) * cosf(_latitude2) * cosf(dlon));
  
     CGFloat bearing = atan2f(y, x);

@@ -12,11 +12,11 @@
 		F04E22EA1696213000038520 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F04E22E91696213000038520 /* CoreGraphics.framework */; };
 		F04E22F01696213000038520 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F04E22EE1696213000038520 /* InfoPlist.strings */; };
 		F04E22F21696213000038520 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F04E22F11696213000038520 /* main.m */; };
-		F04E22F61696213000038520 /* ZFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F04E22F51696213000038520 /* ZFAppDelegate.m */; };
 		F04E22F81696213000038520 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F04E22F71696213000038520 /* Default.png */; };
 		F04E22FA1696213000038520 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F04E22F91696213000038520 /* Default@2x.png */; };
 		F04E22FC1696213000038520 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F04E22FB1696213000038520 /* Default-568h@2x.png */; };
 		F08E69E7169621C4002578DD /* ZFHaversine.m in Sources */ = {isa = PBXBuildFile; fileRef = F08E69E6169621C4002578DD /* ZFHaversine.m */; };
+		F0A5AD54169B36AB00AB088F /* ZFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F2E6C9169B365D009E1E86 /* ZFAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,13 +28,13 @@
 		F04E22EF1696213000038520 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F04E22F11696213000038520 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F04E22F31696213000038520 /* ZFHaversine-Sample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZFHaversine-Sample-Prefix.pch"; sourceTree = "<group>"; };
-		F04E22F41696213000038520 /* ZFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFAppDelegate.h; sourceTree = "<group>"; };
-		F04E22F51696213000038520 /* ZFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFAppDelegate.m; sourceTree = "<group>"; };
 		F04E22F71696213000038520 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F04E22F91696213000038520 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F04E22FB1696213000038520 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F08E69E5169621C4002578DD /* ZFHaversine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFHaversine.h; sourceTree = "<group>"; };
 		F08E69E6169621C4002578DD /* ZFHaversine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFHaversine.m; sourceTree = "<group>"; };
+		F0F2E6C8169B365D009E1E86 /* ZFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFAppDelegate.h; sourceTree = "<group>"; };
+		F0F2E6C9169B365D009E1E86 /* ZFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFAppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +82,8 @@
 		F04E22EB1696213000038520 /* ZFHaversine-Sample */ = {
 			isa = PBXGroup;
 			children = (
-				F04E22F41696213000038520 /* ZFAppDelegate.h */,
-				F04E22F51696213000038520 /* ZFAppDelegate.m */,
+				F0F2E6C8169B365D009E1E86 /* ZFAppDelegate.h */,
+				F0F2E6C9169B365D009E1E86 /* ZFAppDelegate.m */,
 				F04E22EC1696213000038520 /* Supporting Files */,
 			);
 			path = "ZFHaversine-Sample";
@@ -178,8 +178,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A5AD54169B36AB00AB088F /* ZFAppDelegate.m in Sources */,
 				F04E22F21696213000038520 /* main.m in Sources */,
-				F04E22F61696213000038520 /* ZFAppDelegate.m in Sources */,
 				F08E69E7169621C4002578DD /* ZFHaversine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

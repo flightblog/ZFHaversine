@@ -29,6 +29,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    ////////////////////
+    // Test coordinates
+    
     // Nantucket Memorial Airport (KACK)
     double latitude1 = 41.253;
     double longitude1 = -70.060;
@@ -36,14 +39,18 @@
     // Block Island Airport (KBID)
     double latitude2 = 41.168;
     double longitude2 = -71.578;
-
-    // alloc/init and set
-    ZFHaversine *distance = [[ZFHaversine alloc] init];
     
-    [distance setLatitude1:latitude1];
-    [distance setLongitude1:longitude1];
-    [distance setLatitude2:latitude2];
-    [distance setLongitude2:longitude2];
+    
+    ////////////////////
+    // alloc & init
+    
+    // alloc/init and set
+    ZFHaversine *distanceAndBearing = [[ZFHaversine alloc] init];
+    
+    [distanceAndBearing setLatitude1:latitude1];
+    [distanceAndBearing setLongitude1:longitude1];
+    [distanceAndBearing setLatitude2:latitude2];
+    [distanceAndBearing setLongitude2:longitude2];
     
     // alloc/initWith coordinates
     /*
@@ -55,18 +62,20 @@
     
     
     //////////////////
-    // Distance
-    NSLog(@"Kilos %f", [distance kilos]);
-    NSLog(@"Meters %f", [distance meters]);
-    NSLog(@"Nautial Miles %f", [distance nauticalMiles]);
-    NSLog(@"Miles %f", [distance miles]);
-    NSLog(@"Yards %f", [distance yards]);
-    NSLog(@"Feet %f", [distance feet]);
+    // Results for Distance
+    
+    NSLog(@"Kilos %f", [distanceAndBearing kilos]);
+    NSLog(@"Meters %f", [distanceAndBearing meters]);
+    NSLog(@"Nautial Miles %f", [distanceAndBearing nauticalMiles]);
+    NSLog(@"Miles %f", [distanceAndBearing miles]);
+    NSLog(@"Yards %f", [distanceAndBearing yards]);
+    NSLog(@"Feet %f", [distanceAndBearing feet]);
     
     
     ////////////////////
-    // Bearing
-    NSLog(@"Initial Bearing %f", [distance initialBearing]); // KACK to KBID should be 085
+    // Results for Bearing
+    
+    NSLog(@"Initial Bearing %f", [distanceAndBearing initialBearing]); // KACK to KBID should be 085
     
     
     self.window.backgroundColor = [UIColor whiteColor];
