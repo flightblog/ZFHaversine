@@ -36,12 +36,9 @@
 
 - (CGFloat) kilos;
 - (CGFloat) meters;
-- (CGFloat) centimeters;
-- (CGFloat) millimeters;
 - (CGFloat) nauticalMiles;
 - (CGFloat) miles;
 - (CGFloat) yards;
 - (CGFloat) feet;
-- (CGFloat) inches;
 
 @end

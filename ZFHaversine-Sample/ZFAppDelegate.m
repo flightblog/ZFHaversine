@@ -57,14 +57,10 @@
     // Results
     NSLog(@"Kilos %f", [distance kilos]);
     NSLog(@"Meters %f", [distance meters]);
-    NSLog(@"Centimeters %f", [distance centimeters]);
-    NSLog(@"Millimeters %f", [distance millimeters]);
-
     NSLog(@"Nautial Miles %f", [distance nauticalMiles]);
     NSLog(@"Miles %f", [distance miles]);
     NSLog(@"Yards %f", [distance yards]);
     NSLog(@"Feet %f", [distance feet]);
-    NSLog(@"Inches %f", [distance inches]);
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

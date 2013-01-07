@@ -77,16 +77,6 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
     return [self haversineDistance] * 1000;
 }
 
-- (CGFloat) centimeters
-{
-    return [self haversineDistance] * 10000;
-}
-
-- (CGFloat) millimeters
-{
-    return [self haversineDistance] * 100000;
-}
-
 - (CGFloat) nauticalMiles
 {
     return [self haversineDistance] * 0.539957;
@@ -105,11 +95,6 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
 - (CGFloat) feet
 {
     return [self haversineDistance] * 3280.84 ;
-}
-
-- (CGFloat) inches
-{
-    return [self haversineDistance] * 39370.1;
 }
 
 @end
