@@ -28,16 +28,7 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
 
 - (id) init
 {
-    self = [super init];
-    
-    if (self) {
-        _latitude1 = 0;
-        _longitude1 = 0;
-        _latitude2 = 0;
-        _longitude2 = 0;
-    }
-    
-    return self;
+    return [self initWithLatitude1:0 longitude1:0 latitude2:0 longitude2:0];
 }
 
 - (id) initWithLatitude1:(CGFloat)latitude1

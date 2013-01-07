@@ -37,7 +37,6 @@
     double latitude2 = 41.168;
     double longitude2 = -71.578;
 
-    
     // alloc/init/set
     ZFHaversine *distance = [[ZFHaversine alloc] init];
     
