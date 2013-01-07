@@ -57,8 +57,8 @@
     // Results
     NSLog(@"Kilos %f", [distance kilos]);
     NSLog(@"Meters %f", [distance meters]);
-    NSLog(@"centimeters %f", [distance centimeters]);
-    NSLog(@"millimeters %f", [distance millimeters]);
+    NSLog(@"Centimeters %f", [distance centimeters]);
+    NSLog(@"Millimeters %f", [distance millimeters]);
 
     NSLog(@"Nautial Miles %f", [distance nauticalMiles]);
     NSLog(@"Miles %f", [distance miles]);

@@ -88,14 +88,14 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
     return [self haversineDistance] * 100000;
 }
 
-- (CGFloat) miles
-{
-    return [self haversineDistance]  * 0.621371;
-}
-
 - (CGFloat) nauticalMiles
 {
     return [self haversineDistance] * 0.539957;
+}
+
+- (CGFloat) miles
+{
+    return [self haversineDistance]  * 0.621371;
 }
 
 - (CGFloat) feet
