@@ -42,7 +42,9 @@ http://en.wikipedia.org/wiki/Haversine_formula
 
 ### TODO:
 
-* Add compass heading.
+* Add initial & final course bearings
+* GPS coordinates validation
+* Option to use Spherical Law of Cosines distance formula in place of Haversine formula
 
 ## Contact
 
