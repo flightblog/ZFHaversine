@@ -65,8 +65,6 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 }
 
 
-
-
 #pragma mark - Validate Coordinates
 // Validates latitude and logitude coordinates. Latittude must be within -90 and 90 degrees. Longitude must be within -180 and 180.
 - (BOOL)validateCoordinates 
@@ -108,6 +106,12 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
     return distance;
 }
 
+- (void) defindDefaultDistanceFormula
+{
+    // define default distance formula
+}
+
+
 #pragma mark - Bearings
 - (CGFloat) calculateInitialBearing
 {
@@ -134,7 +138,7 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 }
 
 
-#pragma mark - Distance Methods
+#pragma mark - Return Methods for Distance
 - (CGFloat) kilos
 {
     if (_distanceFormula == nil) {
@@ -147,34 +151,45 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 - (CGFloat) meters
 {
     if ([self validateCoordinates]) {
-        NSLog(@"valid coordinates");
+        return [self haversineDistance] * 1000;
     }
-
-    return [self haversineDistance] * 1000;
+    return 0;
 }
 
 - (CGFloat) nauticalMiles
 {
-    return [self haversineDistance] * 0.539957;
+    if ([self validateCoordinates]) {
+        return [self haversineDistance] * 0.539957;
+    }
+    return 0;
 }
 
 - (CGFloat) miles
 {
-    return [self haversineDistance]  * 0.621371;
+    if ([self validateCoordinates]) {
+        return [self haversineDistance]  * 0.621371;
+    }
+    return 0;
 }
 
 - (CGFloat) yards
 {
-    return [self haversineDistance] * 1093.61 ;
+    if ([self validateCoordinates]) {
+        return [self haversineDistance] * 1093.61;
+    }
+    return 0;
 }
 
 - (CGFloat) feet
 {
-    return [self haversineDistance] * 3280.84 ;
+    if ([self validateCoordinates]) {
+        return [self haversineDistance] * 3280.84;
+    }
+    return 0;
 }
 
 
-#pragma mark - Bearing Methods
+#pragma mark - Return Methods for Bearing
 - (CGFloat) initialBearing
 {
     if ([self validateCoordinates]) {
