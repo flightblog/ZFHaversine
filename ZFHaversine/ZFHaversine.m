@@ -25,18 +25,17 @@ static const double EARTH_RADIUS_IN_KILOS = 6372.797560856;
 static const double DEGRESS_TO_RADIANS = M_PI/180.0;
 
 @implementation ZFHaversine
-{
-    NSNumber *_kilos;
-}
 
 - (id) init
 {
     self = [super init];
     
-    _latitude1 = 0;
-    _longitude1 = 0;
-    _latitude2 = 0;
-    _longitude2 = 0;
+    if (self) {
+        _latitude1 = 0;
+        _longitude1 = 0;
+        _latitude2 = 0;
+        _longitude2 = 0;
+    }
     
     return self;
 }
@@ -98,6 +97,11 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
     return [self haversineDistance]  * 0.621371;
 }
 
+- (CGFloat) yards
+{
+    return [self haversineDistance] * 1093.61 ;
+}
+
 - (CGFloat) feet
 {
     return [self haversineDistance] * 3280.84 ;
@@ -107,6 +111,5 @@ static const double DEGRESS_TO_RADIANS = M_PI/180.0;
 {
     return [self haversineDistance] * 39370.1;
 }
-
 
 @end
