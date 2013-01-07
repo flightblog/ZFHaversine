@@ -51,5 +51,6 @@
 
 // Initial Bearing
 - (CGFloat) initialBearing;
+- (CGFloat) finalBearing;
 
 @end

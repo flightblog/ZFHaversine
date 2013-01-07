@@ -66,33 +66,29 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 
 
 
+
+#pragma mark - Validate Coordinates
 // Validates latitude and logitude coordinates. Latittude must be within -90 and 90 degrees. Longitude must be within -180 and 180.
-- (BOOL)validateCoordinates
+- (BOOL)validateCoordinates 
 {
     // Checking validity of latitude
-    if ((_latitude1 || _latitude2) > 90) {
+    if ((_latitude1 || _latitude2) > 90 || (_latitude1 || _latitude2) < -90) {
         NSLog(@"Latitude out of range. (A latitude not be greater then +/- 90 degrees");
-        return 0;
-    } else if ((_latitude1 || _latitude2) < -90) {
-        NSLog(@"Latitude out of range (A latitude not be greater then +/- 90 degrees");
         return 0;
     }
     
     // Checking validity of longitude
-    if ((_longitude1 || _longitude2) > 180) {
+    if ((_longitude1 || _longitude2) > 180 || (_longitude1 || _longitude2) < -180) {
         NSLog(@"Longitude out of range. (A longitude can not be greater then +/- 180");
         return 0;
-    } else if ((_longitude1 || _longitude2) < -180) {
-        return 0;
-        NSLog(@"Longitude out of range. (A longitude can not be greater then +/- 180");
     }
+    
     return 1;
 }
 
 
-///////////////////
-// Distance
 
+#pragma mark - Distance Formulas
 - (CGFloat) haversineDistance
 {
     CGFloat dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
@@ -100,9 +96,8 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
     
     CGFloat a =  pow(sin(dlat * 0.5), 2)+ cos(_latitude1 * DEGRESS_TO_RADIANS) * cos(_latitude2 * DEGRESS_TO_RADIANS) * pow(sin(dlon * 0.5), 2);
     CGFloat c = 2.0 * atan2(sqrt(a), sqrt(1-a));
-    CGFloat d = EARTH_RADIUS_IN_KILOS * c;
-    
-    return d = EARTH_RADIUS_IN_KILOS * c;
+//    CGFloat distanceInKilos = EARTH_RADIUS_IN_KILOS * c;    
+    return EARTH_RADIUS_IN_KILOS * c;
 }
 
 - (CGFloat) sphericalLawOfCosinesDistance
@@ -113,7 +108,33 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
     return distance;
 }
 
+#pragma mark - Bearings
+- (CGFloat) calculateInitialBearing
+{
+    CGFloat dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
+    
+    CGFloat y = sin(dlon) * cosf(_latitude2);
+    CGFloat x = cosf(_latitude1 * sinf(_latitude2) - sinf(_latitude1) * cosf(_latitude2) * cosf(dlon));
+    
+    CGFloat bearing = atan2f(y, x);
+    
+    return bearing;
+}
 
+- (CGFloat) calculateFinalBearing
+{
+    CGFloat dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
+    
+    CGFloat y = sin(dlon) * cosf(_latitude2);
+    CGFloat x = cosf(_latitude1 * sinf(_latitude2) - sinf(_latitude1) * cosf(_latitude2) * cosf(dlon));
+    
+    CGFloat bearing = atan2f(y, x);
+    
+    return bearing;
+}
+
+
+#pragma mark - Distance Methods
 - (CGFloat) kilos
 {
     if (_distanceFormula == nil) {
@@ -128,8 +149,7 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
     if ([self validateCoordinates]) {
         NSLog(@"valid coordinates");
     }
-    
-    
+
     return [self haversineDistance] * 1000;
 }
 
@@ -154,28 +174,21 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 }
 
 
-///////////////////
-// Initial Bearing
-
-/* Java Script
- 
- var y = Math.sin(dLon) * Math.cos(lat2);
- var x = Math.cos(lat1)*Math.sin(lat2) -
- Math.sin(lat1)*Math.cos(lat2)*Math.cos(dLon);
- var brng = Math.atan2(y, x).toDeg();
-
-*/
-
+#pragma mark - Bearing Methods
 - (CGFloat) initialBearing
 {
-    CGFloat dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
-    
-    CGFloat y = sin(dlon) * cosf(_latitude2);
-    CGFloat x = cosf(_latitude1 * sinf(_latitude2) - sinf(_latitude1) * cosf(_latitude2) * cosf(dlon));
- 
-    CGFloat bearing = atan2f(y, x);
-    
-    return bearing;
+    if ([self validateCoordinates]) {
+        return [self initialBearing];
+    }
+    return 0;
+}
+
+- (CGFloat) finalBearing
+{
+    if ([self validateCoordinates]){
+        return [self finalBearing];
+    }
+    return 0;
 }
 
 @end
