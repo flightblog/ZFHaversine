@@ -32,33 +32,53 @@
     ////////////////////
     // Test coordinates
     
-    // Nantucket Memorial Airport (KACK)
-    double latitude1 = 41.253;
-    double longitude1 = -70.060;
+//    // Nantucket Memorial Airport (KACK)
+//    CGFloat latitude1 = 41.253;
+//    CGFloat longitude1 = -70.060;
+//    
+//    // Block Island Airport (KBID)
+//    CGFloat latitude2 = 41.168;
+//    CGFloat longitude2 = -71.578;
     
-    // Block Island Airport (KBID)
-    double latitude2 = 41.168;
-    double longitude2 = -71.578;
+    
+//    // Stack Exchange
+//    CGFloat latitude1 = 50.405018;
+//    CGFloat longitude1 =  8.437500;
+//    
+//    CGFloat latitude2 = 51.339802;
+//    CGFloat longitude2 =  12.403340;
+
+    // BOS to SFO
+
+    // BOS
+    CGFloat latitude1 = 42.3629722;
+    CGFloat longitude1 = -71.0064167;
+    
+    // SFO
+    CGFloat latitude2 = 37.6191050;
+    CGFloat longitude2 = -122.3752372;
+    
+
     
     
     ////////////////////
     // alloc & init
     
     // alloc/init and set
-    ZFHaversine *distanceAndBearing = [[ZFHaversine alloc] init];
-    
-    [distanceAndBearing setLatitude1:latitude1];
-    [distanceAndBearing setLongitude1:longitude1];
-    [distanceAndBearing setLatitude2:latitude2];
-    [distanceAndBearing setLongitude2:longitude2];
+//    ZFHaversine *distanceAndBearing = [[ZFHaversine alloc] init];
+//    
+//    [distanceAndBearing setLatitude1:latitude1];
+//    [distanceAndBearing setLongitude1:longitude1];
+//    [distanceAndBearing setLatitude2:latitude2];
+//    [distanceAndBearing setLongitude2:longitude2];
     
     // alloc/initWith coordinates
-    /*
-    ZFHaversine *distance = [[ZFHaversine alloc] initWithLatitude1:latitude1
-                                                        longitude1:longitude1
-                                                         latitude2:latitude2
-                                                        longitude2:longitude2];
-    */
+    
+    ZFHaversine *distanceAndBearing = [[ZFHaversine alloc] initWithLatitude1:latitude1
+                                                                  longitude1:longitude1
+                                                                   latitude2:latitude2
+                                                                  longitude2:longitude2];
+    
     
     
     //////////////////
@@ -75,8 +95,8 @@
     ////////////////////
     // Results for Bearing
     
-    NSLog(@"Initial Bearing %f", [distanceAndBearing initialBearing]); // KACK to KBID should be 085
-    
+    NSLog(@"Initial Bearing %f", [distanceAndBearing initialBearing]);
+    NSLog(@"Initial Bearing %f", [distanceAndBearing finalBearing]); 
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

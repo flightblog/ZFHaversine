@@ -66,17 +66,20 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 
 
 #pragma mark - Validate Coordinates
-// Validates latitude and logitude coordinates. Latittude must be within -90 and 90 degrees. Longitude must be within -180 and 180.
-- (BOOL)validateCoordinates 
+- (BOOL) validateCoordinates
 {
-    // Checking validity of latitude
-    if ((_latitude1 || _latitude2) > 90 || (_latitude1 || _latitude2) < -90) {
+    // Validates latitude and logitude coordinates. Latittude must be within -90 and 90 degrees. Longitude must be within -180 and 180.
+    
+    if (_latitude1 > 90 || _latitude2 > 90 || _latitude1 < -90 || _latitude2 < -90) {
+    
         NSLog(@"Latitude out of range. (A latitude not be greater then +/- 90 degrees");
+        //NSError *error = nil;
+        
         return 0;
     }
     
-    // Checking validity of longitude
-    if ((_longitude1 || _longitude2) > 180 || (_longitude1 || _longitude2) < -180) {
+    if (_longitude1 > 180 || _longitude2 > 180 || _longitude1 < -180 || _longitude2 < -180) {
+        
         NSLog(@"Longitude out of range. (A longitude can not be greater then +/- 180");
         return 0;
     }
@@ -85,10 +88,17 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 }
 
 
-
 #pragma mark - Distance Formulas
+- (void) defindDefaultDistanceFormula
+{
+    // define default distance formula
+}
+
 - (CGFloat) haversineDistance
 {
+    
+    // Implementaion of the haversine formula returning distance in kilos.
+    
     CGFloat dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
     CGFloat dlat = (_latitude2 - _latitude1) * DEGRESS_TO_RADIANS;
     
@@ -101,51 +111,21 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 - (CGFloat) sphericalLawOfCosinesDistance
 {
     
-    CGFloat distance = acoshf(sinf(_latitude1) *sinf(_latitude2) + cosf(_latitude1) * cosf(_latitude2) * cosf(_longitude2 - _longitude2) * EARTH_RADIUS_IN_KILOS);
+    // Alturnative formula for finding distance (returned in kilos) using the Sperical Law of Cosines
     
-    return distance;
-}
+    CGFloat distanceInKilos = acoshf(sinf(_latitude1) *sinf(_latitude2) + cosf(_latitude1) * cosf(_latitude2) * cosf(_longitude2 - _longitude2) * EARTH_RADIUS_IN_KILOS);
 
-- (void) defindDefaultDistanceFormula
-{
-    // define default distance formula
+    return distanceInKilos;
 }
 
 
-#pragma mark - Bearings
-- (CGFloat) calculateInitialBearing
-{
-    CGFloat dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
-    
-    CGFloat y = sin(dlon) * cosf(_latitude2);
-    CGFloat x = cosf(_latitude1 * sinf(_latitude2) - sinf(_latitude1) * cosf(_latitude2) * cosf(dlon));
-    
-    CGFloat bearing = atan2f(y, x);
-    
-    return bearing;
-}
-
-- (CGFloat) calculateFinalBearing
-{
-    CGFloat dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
-    
-    CGFloat y = sin(dlon) * cosf(_latitude2);
-    CGFloat x = cosf(_latitude1 * sinf(_latitude2) - sinf(_latitude1) * cosf(_latitude2) * cosf(dlon));
-    
-    CGFloat bearing = atan2f(y, x);
-    
-    return bearing;
-}
-
-
-#pragma mark - Return Methods for Distance
+#pragma mark - Distance Return Methods
 - (CGFloat) kilos
 {
-    if (_distanceFormula == nil) {
+    if ([self validateCoordinates]) {
         return [self haversineDistance];
-    } else {
-        return [self sphericalLawOfCosinesDistance];
     }
+    return 0;
 }
 
 - (CGFloat) meters
@@ -189,21 +169,53 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 }
 
 
-#pragma mark - Return Methods for Bearing
+#pragma mark - Bearing Formulas
+- (CGFloat) calculateInitialBearing
+{
+    
+    // Calculating initial bearing
+    
+    float _latitude1_ToRadians = (_latitude1 / 180) * M_PI;
+    float _longitude1_ToRadians = (_longitude1 / 180) * M_PI; 
+    float _latitude2_ToRadians = (_latitude2 / 180) * M_PI;
+    float _longitude2_ToRadians = (_longitude2 / 180) * M_PI;
+    
+    CGFloat x = sinf(_longitude2_ToRadians - _longitude1_ToRadians) * cosf(_latitude2_ToRadians);
+    CGFloat y = cosf(_latitude1_ToRadians) * sinf(_latitude2_ToRadians) - sinf(_latitude1_ToRadians) * cosf(_latitude2_ToRadians) * cosf(_longitude2_ToRadians - _longitude1_ToRadians);
+    
+    CGFloat radians = atan2f(x, y);
+        
+    return (radians * RADIANS_TO_DEGRESS) + 360;
+}
+ 
+- (CGFloat) calculateFinalBearing
+{
+    
+    // Calculating final bearing
+    
+    float _latitude2_ToRadians = (_latitude1 / 180) * M_PI;
+    float _longitude2_ToRadians = (_longitude1 / 180) * M_PI;
+    float _latitude1_ToRadians = (_latitude2 / 180) * M_PI;
+    float _longitude1_ToRadians = (_longitude2 / 180) * M_PI;
+    
+    CGFloat x = sinf(_longitude2_ToRadians - _longitude1_ToRadians) * cosf(_latitude2_ToRadians);
+    CGFloat y = cosf(_latitude1_ToRadians) * sinf(_latitude2_ToRadians) - sinf(_latitude1_ToRadians) * cosf(_latitude2_ToRadians) * cosf(_longitude2_ToRadians - _longitude1_ToRadians);
+    
+    CGFloat radians = atan2f(x, y);
+    
+    return (radians * RADIANS_TO_DEGRESS) + 180;
+}
+
+
+#pragma mark - Bearing Return Methods
 - (CGFloat) initialBearing
 {
-    if ([self validateCoordinates]) {
-        return [self initialBearing];
-    }
-    return 0;
+    return [self calculateInitialBearing];
 }
 
 - (CGFloat) finalBearing
 {
-    if ([self validateCoordinates]){
-        return [self finalBearing];
-    }
-    return 0;
+    return [self calculateFinalBearing];
 }
 
 @end
