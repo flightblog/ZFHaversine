@@ -76,10 +76,15 @@
                                                                    latitude2:latitude2
                                                                   longitude2:longitude2];
     
+    
+    //[distanceAndBearing setFormulaMode:sphericalFormula];
+    
     //////////////////
     // Results for Distance
     
     NSLog(@"Kilos %f", [distanceAndBearing kilos]);
+    NSLog(@"kilosSphericalLawOfCosinesDistance %f", [distanceAndBearing kilosSphericalLawOfCosinesDistance]);
+    
     NSLog(@"Meters %f", [distanceAndBearing meters]);
     NSLog(@"Nautial Miles %f", [distanceAndBearing nauticalMiles]);
     NSLog(@"Miles %f", [distanceAndBearing miles]);
@@ -91,7 +96,8 @@
     // Results for Bearing
     
     NSLog(@"Initial Bearing %f", [distanceAndBearing initialBearing]);
-    NSLog(@"Initial Bearing %f", [distanceAndBearing finalBearing]); 
+    NSLog(@"Initial Bearing %f", [distanceAndBearing finalBearing]);
+    
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

@@ -49,10 +49,10 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 
 /* 
   
- 1. error message - 
  2. set default mode -
  3. unit testing - specta (built on OCunit)
  4. look at cocoa controls
+ 5. White Street Brewery
  
  */
 
@@ -100,11 +100,11 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
     CGFloat _latitude2_ToRadians = _latitude2 * DEGRESS_TO_RADIANS;
     
     CGFloat a = sinf(latitudeDelta/2)
-            * sinf(latitudeDelta/2)
-            + sinf(longitudeDelta/2)
-            * sinf(longitudeDelta/2)
-            * cosf(_latitude1_ToRadians)
-            * cosf(_latitude2_ToRadians);
+                * sinf(latitudeDelta/2)
+                + sinf(longitudeDelta/2)
+                * sinf(longitudeDelta/2)
+                * cosf(_latitude1_ToRadians)
+                * cosf(_latitude2_ToRadians);
     
     CGFloat c = 2.0 * atan2(sqrt(a), sqrt(1-a));
   
@@ -114,32 +114,44 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 - (CGFloat) sphericalLawOfCosinesDistance
 {
     
-    // Alturnative formula for finding distance (returned in kilos) using the Sperical Law of Cosines
+    // Alternative formula for finding distance (returned in kilos) using the Sperical Law of Cosines
     
-    CGFloat distanceInKilos = acoshf(sinf(_latitude1) *sinf(_latitude2) + cosf(_latitude1) * cosf(_latitude2) * cosf(_longitude2 - _longitude2) * EARTH_RADIUS_IN_KILOS);
+    /*
+     var R = 6371; // km
+     var d = Math.acos(Math.sin(lat1)*Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2) * Math.cos(lon2-lon1)) * R;
+    */
+    
+    //CGFloat distanceInKilos = acosf(sinf(_latitude1_ToRadians) * sinf(_latitude2_ToRadians) + cosf(_latitude1_ToRadians) * cosf(_latitude2_ToRadians) * cosf(_latitude2_ToRadians - _latitude2_ToRadians)) * EARTH_RADIUS_IN_KILOS;
+
+    CGFloat distanceInKilos = acosf(sinf(_latitude1) * sinf(_latitude2) + cosf(_latitude1) * cosf(_latitude2) * cosf(_longitude2 - _longitude1) * EARTH_RADIUS_IN_KILOS);
 
     return distanceInKilos;
 }
-
+ 
 
 #pragma mark - Distance Return Methods
+- (CGFloat) kilosSphericalLawOfCosinesDistance
+{
+    return [self sphericalLawOfCosinesDistance];
+}
+
 - (CGFloat) kilos
 {
-    if (([_distanceFormula isEqualToString:@"spherical"]) && ([self validateCoordinates]) ) {
-        return [self sphericalLawOfCosinesDistance];
-    } else if ([self validateCoordinates]) {
-        return [self haversineDistance];
-    } else {
-        return 0;
-    }
+    if ([self validateCoordinates])
+        return _formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] : [self haversineDistance];
+    return 0;
 }
 
 - (CGFloat) meters
 {
-    if ([self validateCoordinates]) {
-        return [self haversineDistance] * 1000;
-    }
+    if ([self validateCoordinates])
+        return _formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] * 1000 : [self haversineDistance] * 1000;
     return 0;
+    
+//    if ([self validateCoordinates]) {
+//        return [self haversineDistance] * 1000;
+//    }
+//    return 0;
 }
 
 - (CGFloat) nauticalMiles

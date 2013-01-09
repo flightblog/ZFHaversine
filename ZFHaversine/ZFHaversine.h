@@ -24,19 +24,26 @@
 
 @interface ZFHaversine : NSObject
 
+typedef NS_ENUM (NSInteger, DistanceFormula) {
+	haversineFormula,
+	sphericalFormula
+};
+
 @property (readwrite) CGFloat latitude1;
 @property (readwrite) CGFloat longitude1;
 @property (readwrite) CGFloat latitude2;
 @property (readwrite) CGFloat longitude2;
-@property (copy) NSString *distanceFormula;
+@property (nonatomic) DistanceFormula formulaMode;
 
 - (id)initWithLatitude1:(CGFloat)latitude1
              longitude1:(CGFloat)longitude1
               latitude2:(CGFloat)latitude2
              longitude2:(CGFloat)longitude2;
 
-
 // Distance
+
+- (CGFloat) kilosSphericalLawOfCosinesDistance;
+
 - (CGFloat) kilos;
 - (CGFloat) meters;
 - (CGFloat) nauticalMiles;
