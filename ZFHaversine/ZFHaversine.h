@@ -41,9 +41,6 @@ typedef NS_ENUM (NSInteger, DistanceFormula) {
              longitude2:(CGFloat)longitude2;
 
 // Distance
-
-- (CGFloat) kilosSphericalLawOfCosinesDistance;
-
 - (CGFloat) kilos;
 - (CGFloat) meters;
 - (CGFloat) nauticalMiles;
@@ -54,8 +51,5 @@ typedef NS_ENUM (NSInteger, DistanceFormula) {
 // Initial Bearing
 - (CGFloat) initialBearing;
 - (CGFloat) finalBearing;
-
-// Change default distance formula to sphericalLawOfCosines
-- (BOOL) changeDistanceFormula:(NSString *)mode;
 
 @end
