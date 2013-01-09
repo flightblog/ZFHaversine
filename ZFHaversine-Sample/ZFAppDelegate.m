@@ -58,9 +58,6 @@
     CGFloat latitude2 = 37.6191050;
     CGFloat longitude2 = -122.3752372;
     
-
-    
-    
     ////////////////////
     // alloc & init
     
@@ -78,8 +75,6 @@
                                                                   longitude1:longitude1
                                                                    latitude2:latitude2
                                                                   longitude2:longitude2];
-    
-    
     
     //////////////////
     // Results for Distance

@@ -29,7 +29,7 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 
 - (id) init
 {
-    return [self initWithLatitude1:0 longitude1:0 latitude2:0 longitude2:0 distanceFormula:nil];
+    return [self initWithLatitude1:0 longitude1:0 latitude2:0 longitude2:0];
 }
 
 - (id) initWithLatitude1:(CGFloat)latitude1
@@ -47,21 +47,20 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
     return self;
 }
 
-- (id) initWithLatitude1:(CGFloat)latitude1
-              longitude1:(CGFloat)longitude1
-               latitude2:(CGFloat)latitude2
-              longitude2:(CGFloat)longitude2
-         distanceFormula:(NSString *)distanceFormula
+/* 
+  
+ 1. error message - 
+ 2. set default mode -
+ 3. unit testing - specta (built on OCunit)
+ 4. look at cocoa controls
+ 
+ */
+
+# pragma mark - Change Default Distance Formula 
+// ?????
+- (BOOL)changeDistanceFormula:(NSString *)mode
 {
-    self = [super init];
-    if (self) {
-        _latitude1 = latitude1;
-        _longitude1 = longitude1;
-        _latitude2 = latitude2;
-        _longitude2 = longitude2;
-        _distanceFormula = distanceFormula;
-    }
-    return self;
+	return 1;
 }
 
 
@@ -89,22 +88,26 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 
 
 #pragma mark - Distance Formulas
-- (void) defindDefaultDistanceFormula
-{
-    // define default distance formula
-}
-
 - (CGFloat) haversineDistance
 {
     
     // Implementaion of the haversine formula returning distance in kilos.
+
+    CGFloat longitudeDelta = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
+    CGFloat latitudeDelta = (_latitude2 - _latitude1) * DEGRESS_TO_RADIANS;
     
-    CGFloat dlon = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
-    CGFloat dlat = (_latitude2 - _latitude1) * DEGRESS_TO_RADIANS;
+    CGFloat _latitude1_ToRadians = _latitude1 * DEGRESS_TO_RADIANS;
+    CGFloat _latitude2_ToRadians = _latitude2 * DEGRESS_TO_RADIANS;
     
-    CGFloat a =  pow(sin(dlat * 0.5), 2)+ cos(_latitude1 * DEGRESS_TO_RADIANS) * cos(_latitude2 * DEGRESS_TO_RADIANS) * pow(sin(dlon * 0.5), 2);
+    CGFloat a = sinf(latitudeDelta/2)
+            * sinf(latitudeDelta/2)
+            + sinf(longitudeDelta/2)
+            * sinf(longitudeDelta/2)
+            * cosf(_latitude1_ToRadians)
+            * cosf(_latitude2_ToRadians);
+    
     CGFloat c = 2.0 * atan2(sqrt(a), sqrt(1-a));
-//    CGFloat distanceInKilos = EARTH_RADIUS_IN_KILOS * c;    
+  
     return EARTH_RADIUS_IN_KILOS * c;
 }
 
@@ -122,10 +125,13 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 #pragma mark - Distance Return Methods
 - (CGFloat) kilos
 {
-    if ([self validateCoordinates]) {
+    if (([_distanceFormula isEqualToString:@"spherical"]) && ([self validateCoordinates]) ) {
+        return [self sphericalLawOfCosinesDistance];
+    } else if ([self validateCoordinates]) {
         return [self haversineDistance];
+    } else {
+        return 0;
     }
-    return 0;
 }
 
 - (CGFloat) meters
@@ -219,20 +225,4 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
