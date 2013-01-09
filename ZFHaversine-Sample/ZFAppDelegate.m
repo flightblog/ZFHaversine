@@ -83,8 +83,6 @@
     // Results for Distance
     
     NSLog(@"Kilos %f", [distanceAndBearing kilos]);
-    NSLog(@"kilosSphericalLawOfCosinesDistance %f", [distanceAndBearing kilosSphericalLawOfCosinesDistance]);
-    
     NSLog(@"Meters %f", [distanceAndBearing meters]);
     NSLog(@"Nautial Miles %f", [distanceAndBearing nauticalMiles]);
     NSLog(@"Miles %f", [distanceAndBearing miles]);

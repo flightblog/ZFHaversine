@@ -21,9 +21,15 @@
 //  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import "ZFHaversine.h"
-static const double EARTH_RADIUS_IN_KILOS = 6372.797560856;
-static const double DEGRESS_TO_RADIANS = M_PI/180.0;
-static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
+static const CGFloat EARTH_RADIUS_IN_KILOS = 6372.797560856;
+static const CGFloat DEGRESS_TO_RADIANS = M_PI/180.0;
+static const CGFloat RADIANS_TO_DEGRESS = 180.0/M_PI;
+
+static const CGFloat KILOS_TO_METERS = 1000;
+static const CGFloat KILOS_TO_NAUTICALMILES = 0.539957;
+static const CGFloat KILOS_TO_MILES = 0.621371;
+static const CGFloat KILOS_TO_YARDS = 1093.61;
+static const CGFloat KILOS_TO_FEET = 3280.84;
 
 @implementation ZFHaversine
 
@@ -56,7 +62,7 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
  
  */
 
-# pragma mark - Change Default Distance Formula 
+# pragma mark - Change Default Distance Formula
 // ?????
 - (BOOL)changeDistanceFormula:(NSString *)mode
 {
@@ -99,12 +105,7 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
     CGFloat _latitude1_ToRadians = _latitude1 * DEGRESS_TO_RADIANS;
     CGFloat _latitude2_ToRadians = _latitude2 * DEGRESS_TO_RADIANS;
     
-    CGFloat a = sinf(latitudeDelta/2)
-                * sinf(latitudeDelta/2)
-                + sinf(longitudeDelta/2)
-                * sinf(longitudeDelta/2)
-                * cosf(_latitude1_ToRadians)
-                * cosf(_latitude2_ToRadians);
+    CGFloat a = sinf(latitudeDelta/2) * sinf(latitudeDelta/2) + sinf(longitudeDelta/2) * sinf(longitudeDelta/2) * cosf(_latitude1_ToRadians) * cos (_latitude2_ToRadians);
     
     CGFloat c = 2.0 * atan2(sqrt(a), sqrt(1-a));
   
@@ -116,25 +117,23 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
     
     // Alternative formula for finding distance (returned in kilos) using the Sperical Law of Cosines
     
-    /*
-     var R = 6371; // km
-     var d = Math.acos(Math.sin(lat1)*Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2) * Math.cos(lon2-lon1)) * R;
-    */
+    CGFloat longitudeDelta_Radians = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
+    CGFloat _latitude1_Radians = _latitude1 * DEGRESS_TO_RADIANS;
+    CGFloat _latitude2_Radians = _latitude2 * DEGRESS_TO_RADIANS;
     
-    //CGFloat distanceInKilos = acosf(sinf(_latitude1_ToRadians) * sinf(_latitude2_ToRadians) + cosf(_latitude1_ToRadians) * cosf(_latitude2_ToRadians) * cosf(_latitude2_ToRadians - _latitude2_ToRadians)) * EARTH_RADIUS_IN_KILOS;
 
-    CGFloat distanceInKilos = acosf(sinf(_latitude1) * sinf(_latitude2) + cosf(_latitude1) * cosf(_latitude2) * cosf(_longitude2 - _longitude1) * EARTH_RADIUS_IN_KILOS);
+    CGFloat distanceInKilos = acosf(sinf(_latitude1_Radians)
+                          * sinf(_latitude2_Radians)
+                          + cosf(_latitude1_Radians)
+                          * cosf(_latitude2_Radians)
+                          * cosf(longitudeDelta_Radians))
+                          * EARTH_RADIUS_IN_KILOS;
 
     return distanceInKilos;
 }
  
 
 #pragma mark - Distance Return Methods
-- (CGFloat) kilosSphericalLawOfCosinesDistance
-{
-    return [self sphericalLawOfCosinesDistance];
-}
-
 - (CGFloat) kilos
 {
     if ([self validateCoordinates])
@@ -145,44 +144,35 @@ static const double RADIANS_TO_DEGRESS = 180.0/M_PI;
 - (CGFloat) meters
 {
     if ([self validateCoordinates])
-        return _formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] * 1000 : [self haversineDistance] * 1000;
+        return _formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] * KILOS_TO_METERS : [self haversineDistance] * KILOS_TO_METERS;
     return 0;
-    
-//    if ([self validateCoordinates]) {
-//        return [self haversineDistance] * 1000;
-//    }
-//    return 0;
 }
 
 - (CGFloat) nauticalMiles
 {
-    if ([self validateCoordinates]) {
-        return [self haversineDistance] * 0.539957;
-    }
+    if ([self validateCoordinates])
+        return _formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] * KILOS_TO_NAUTICALMILES : [self haversineDistance] * KILOS_TO_NAUTICALMILES;
     return 0;
 }
 
 - (CGFloat) miles
 {
-    if ([self validateCoordinates]) {
-        return [self haversineDistance]  * 0.621371;
-    }
+    if ([self validateCoordinates])
+        return _formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] * KILOS_TO_MILES : [self haversineDistance] * KILOS_TO_MILES;
     return 0;
 }
 
 - (CGFloat) yards
 {
-    if ([self validateCoordinates]) {
-        return [self haversineDistance] * 1093.61;
-    }
+    if ([self validateCoordinates])
+        return _formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] * KILOS_TO_YARDS : [self haversineDistance] * KILOS_TO_YARDS;
     return 0;
 }
 
 - (CGFloat) feet
 {
-    if ([self validateCoordinates]) {
-        return [self haversineDistance] * 3280.84;
-    }
+    if ([self validateCoordinates])
+        return _formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] * KILOS_TO_FEET : [self haversineDistance] * KILOS_TO_FEET;
     return 0;
 }
 
