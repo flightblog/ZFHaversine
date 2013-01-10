@@ -1,7 +1,6 @@
 # ZFHaversine #
 
-Objective-C implementation of the Haversine formula used to find the distance between two GPS 
-coordinates. Also, methods are available to find initial and final bearing from GPS coordinates.
+Objective-C implementation of the Haversine formula and Spherical Law of Cosines used to find the distance between two GPS coordinates.  Also, methods are available to find initial and final bearing from GPS coordinates.
 
 
 ### Haversine ###
