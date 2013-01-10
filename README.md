@@ -1,4 +1,3 @@
-
 # ZFHaversine #
 
 Objective-C implementation of the Haversine formula used to find the distance between two GPS 
@@ -21,8 +20,8 @@ http://en.wikipedia.org/wiki/Spherical_law_of_cosines
 
 
 ### Usage ###
-
-
+    
+    
     // Test coordinates
     
     // Nantucket Memorial Airport (KACK)
