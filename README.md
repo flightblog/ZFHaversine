@@ -1,5 +1,4 @@
 
-
 # ZFHaversine #
 
 Objective-C implementation of the Haversine formula used to find the distance between two GPS 
@@ -22,6 +21,7 @@ http://en.wikipedia.org/wiki/Spherical_law_of_cosines
 
 
 ### Usage ###
+
 
     // Test coordinates
     
@@ -68,6 +68,8 @@ http://en.wikipedia.org/wiki/Spherical_law_of_cosines
     // Results for Initial and Final Bearing
     NSLog(@"Initial Bearing %f", [distanceAndBearing initialBearing]);
     NSLog(@"Initial Bearing %f", [distanceAndBearing finalBearing]);
+    
+    
 
 ### TODO:
 
