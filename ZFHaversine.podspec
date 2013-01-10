@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "ZFHaversine"
   s.version      = "0.3"
-  s.summary      = "Objective-C implementation of the Haversine formula used to find the distance between two GPS coordinates."
+  s.summary      = "Objective-C implementation of the Haversine formula and Spherical Law of Cosines used to find the distance between two GPS coordinates.  Also, methods are available to find initial and final bearing from GPS coordinates."
   s.homepage     = "https://github.com/flightblog/ZFHaversine"
 
   s.license      = { :type => 'MIT', :file => 'LICENSE' }

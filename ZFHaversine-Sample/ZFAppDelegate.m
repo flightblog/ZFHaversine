@@ -39,20 +39,20 @@
     CGFloat latitude2 = 41.1681111;
     CGFloat longitude2 =  -71.5778333;
 
-    // Logan International Airport (KBOS)
-    CGFloat latitude1 = 42.3629722;
-    CGFloat longitude1 = -71.0064167;
-    
-    // San Francisco International (KSFO)
-    CGFloat latitude2 = 37.6191050;
-    CGFloat longitude2 = -122.3752372;
+//    // Logan International Airport (KBOS)
+//    CGFloat latitude1 = 42.3629722;
+//    CGFloat longitude1 = -71.0064167;
+//    
+//    // San Francisco International (KSFO)
+//    CGFloat latitude2 = 37.6191050;
+//    CGFloat longitude2 = -122.3752372;
     
     // Setup with
-    ZFHaversine *distanceAndBearing = [[ZFHaversine alloc] init];
-    [distanceAndBearing setLatitude1:latitude1];
-    [distanceAndBearing setLongitude1:longitude1];
-    [distanceAndBearing setLatitude2:latitude2];
-    [distanceAndBearing setLongitude2:longitude2];
+//    ZFHaversine *distanceAndBearing = [[ZFHaversine alloc] init];
+//    [distanceAndBearing setLatitude1:latitude1];
+//    [distanceAndBearing setLongitude1:longitude1];
+//    [distanceAndBearing setLatitude2:latitude2];
+//    [distanceAndBearing setLongitude2:longitude2];
     
     // Setup with coordinates
     ZFHaversine *distanceAndBearing = [[ZFHaversine alloc] initWithLatitude1:latitude1

@@ -146,9 +146,7 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 
 #pragma mark - Distance Return Methods
 - (CGFloat) kilos
-{
-    NSLog(@"formula mode %i", _formulaMode);
-    
+{    
     if ([self validateCoordinates])
         return _formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] : [self haversineDistance];
     return 0;
