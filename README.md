@@ -7,16 +7,12 @@ coordinates. Also, methods are available to find initial and final bearing from 
 ### Haversine ###
 The haversine formula is an equation important in navigation, giving great-circle distances between two 
 points on a sphere from their longitudes and latitudes. It is a special case of a more general formula 
-in spherical trigonometry, the law of haversines, relating the sides and angles of spherical triangles.
-
-http://en.wikipedia.org/wiki/Haversine_formula
+in spherical trigonometry, the law of haversines, relating the sides and angles of spherical triangles. (http://en.wikipedia.org/wiki/Haversine_formula)
 
 ### Spherical Law of Cosines ###
 In spherical trigonometry, the law of cosines (also called the cosine rule for sides) is a theorem 
 relating the sides and angles of spherical triangles, analogous to the ordinary law of cosines from 
-plane trigonometry.
-
-http://en.wikipedia.org/wiki/Spherical_law_of_cosines
+plane trigonometry. (http://en.wikipedia.org/wiki/Spherical_law_of_cosines)
 
 
 ### Usage ###
