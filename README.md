@@ -39,7 +39,7 @@ http://en.wikipedia.org/wiki/Spherical_law_of_cosines
     CGFloat latitude2 = 37.6191050;
     CGFloat longitude2 = -122.3752372;
     
-    // Setup with
+    // Setup
     ZFHaversine *distanceAndBearing = [[ZFHaversine alloc] init];
     [distanceAndBearing setLatitude1:latitude1];
     [distanceAndBearing setLongitude1:longitude1];
@@ -63,7 +63,7 @@ http://en.wikipedia.org/wiki/Spherical_law_of_cosines
     NSLog(@"Yards %f", [distanceAndBearing yards]);
     NSLog(@"Feet %f", [distanceAndBearing feet]);
     
-    // Results for Bearing
+    // Results for Initial and Final Bearing
     NSLog(@"Initial Bearing %f", [distanceAndBearing initialBearing]);
     NSLog(@"Initial Bearing %f", [distanceAndBearing finalBearing]);
 
