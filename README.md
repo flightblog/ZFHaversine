@@ -1,26 +1,22 @@
 # ZFHaversine #
 
-Objective-C implementation of the Haversine formula used to find the distance between two GPS 
-coordinates. Also, methods are available to find initial and final bearing from GPS coordinates.
+Objective-C implementation of the Haversine formula and Spherical Law of Cosines used to find the distance between two GPS coordinates.  Also, methods are available to find initial and final bearing from GPS coordinates.
 
 
 ### Haversine ###
 The haversine formula is an equation important in navigation, giving great-circle distances between two 
 points on a sphere from their longitudes and latitudes. It is a special case of a more general formula 
-in spherical trigonometry, the law of haversines, relating the sides and angles of spherical triangles.
-
-http://en.wikipedia.org/wiki/Haversine_formula
+in spherical trigonometry, the law of haversines, relating the sides and angles of spherical triangles. (http://en.wikipedia.org/wiki/Haversine_formula)
 
 ### Spherical Law of Cosines ###
 In spherical trigonometry, the law of cosines (also called the cosine rule for sides) is a theorem 
 relating the sides and angles of spherical triangles, analogous to the ordinary law of cosines from 
-plane trigonometry.
-
-http://en.wikipedia.org/wiki/Spherical_law_of_cosines
+plane trigonometry. (http://en.wikipedia.org/wiki/Spherical_law_of_cosines)
 
 
 ### Usage ###
-
+    
+    
     // Test coordinates
     
     // Nantucket Memorial Airport (KACK)
@@ -39,7 +35,7 @@ http://en.wikipedia.org/wiki/Spherical_law_of_cosines
     CGFloat latitude2 = 37.6191050;
     CGFloat longitude2 = -122.3752372;
     
-    // Setup with
+    // Setup
     ZFHaversine *distanceAndBearing = [[ZFHaversine alloc] init];
     [distanceAndBearing setLatitude1:latitude1];
     [distanceAndBearing setLongitude1:longitude1];
@@ -63,9 +59,11 @@ http://en.wikipedia.org/wiki/Spherical_law_of_cosines
     NSLog(@"Yards %f", [distanceAndBearing yards]);
     NSLog(@"Feet %f", [distanceAndBearing feet]);
     
-    // Results for Bearing
+    // Results for Initial and Final Bearing
     NSLog(@"Initial Bearing %f", [distanceAndBearing initialBearing]);
     NSLog(@"Initial Bearing %f", [distanceAndBearing finalBearing]);
+    
+    
 
 ### TODO:
 
@@ -74,8 +72,7 @@ http://en.wikipedia.org/wiki/Spherical_law_of_cosines
 
 ### Contact
 
-Steve Foster (foster@flightblog.org)
-[@flightblog](http://twitter.com/flightblog)
+Steve Foster [@flightblog](http://twitter.com/flightblog)
 
 ### License
 
@@ -87,4 +84,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
 
