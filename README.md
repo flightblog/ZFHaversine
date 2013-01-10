@@ -73,8 +73,7 @@ plane trigonometry. (http://en.wikipedia.org/wiki/Spherical_law_of_cosines)
 
 ### Contact
 
-Steve Foster (foster@flightblog.org)
-[@flightblog](http://twitter.com/flightblog)
+Steve Foster [@flightblog](http://twitter.com/flightblog)
 
 ### License
 
