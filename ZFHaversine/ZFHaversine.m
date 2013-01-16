@@ -69,7 +69,7 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
     return self;
 }
 
-#pragma mark - Validate Coordinates
+#pragma mark - Coordinates Validation
 - (BOOL) validateCoordinates
 {
     // Validates latitude and logitude coordinates. Latittude must be within -90 and 90 degrees. Longitude must be within -180 and 180.
@@ -92,7 +92,7 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 }
 
 
-#pragma mark - Distance Formulas
+#pragma mark - Distance & Bearing Formulas
 - (CGFloat) haversineDistance
 {
     
@@ -116,7 +116,6 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 }
 
 
-#pragma mark - Bearing Formulas
 - (CGFloat) calculateInitialBearing
 {
     

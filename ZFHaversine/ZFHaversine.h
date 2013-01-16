@@ -29,18 +29,26 @@ typedef NS_ENUM (NSInteger, DistanceFormula) {
 	sphericalFormula
 };
 
+/** GPS Coordinates for location 1 and location 2 */
 @property (readwrite) CGFloat latitude1;
 @property (readwrite) CGFloat longitude1;
 @property (readwrite) CGFloat latitude2;
 @property (readwrite) CGFloat longitude2;
+
+/** The distance formula can be set to Haversine or Spherical Law Of Cosines. Haversine is the default */
 @property (nonatomic) DistanceFormula formulaMode;
 
+/** Initializer for setting coordinates
+ * @param latitude/longitde coordinates for location 1 and location 2
+ */
 - (id)initWithLatitude1:(CGFloat)latitude1
              longitude1:(CGFloat)longitude1
               latitude2:(CGFloat)latitude2
              longitude2:(CGFloat)longitude2;
 
-// Distance
+/** Return methods for distance 
+ * @return distance for unit of measure
+ */
 - (CGFloat) kilos;
 - (CGFloat) meters;
 - (CGFloat) nauticalMiles;
@@ -48,8 +56,14 @@ typedef NS_ENUM (NSInteger, DistanceFormula) {
 - (CGFloat) yards;
 - (CGFloat) feet;
 
-// Initial Bearing
+/** Initial heading giving set GPS coordinates
+ * @return initial bearing
+ */
 - (CGFloat) initialBearing;
+
+/** Final heading giving set GPS coordinates
+ * @return final bearing
+ */
 - (CGFloat) finalBearing;
 
 @end
