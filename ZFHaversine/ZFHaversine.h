@@ -41,10 +41,10 @@ typedef NS_ENUM (NSInteger, DistanceFormula) {
 /** Initializer for setting coordinates
  * @param latitude/longitde coordinates for location 1 and location 2
  */
-- (id)initWithLatitude1:(CGFloat)latitude1
-             longitude1:(CGFloat)longitude1
-              latitude2:(CGFloat)latitude2
-             longitude2:(CGFloat)longitude2;
+- (id) initWithLatitude1:(CGFloat) latitude1
+              longitude1:(CGFloat) longitude1
+               latitude2:(CGFloat) latitude2
+              longitude2:(CGFloat) longitude2;
 
 /** Return methods for distance 
  * @return distance for each unit of measure

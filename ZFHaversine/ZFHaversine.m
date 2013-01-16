@@ -46,10 +46,10 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
     return [self initWithLatitude1:0 longitude1:0 latitude2:0 longitude2:0];
 }
 
-- (id) initWithLatitude1:(CGFloat)latitude1
-              longitude1:(CGFloat)longitude1
-               latitude2:(CGFloat)latitude2
-              longitude2:(CGFloat)longitude2
+- (id) initWithLatitude1:(CGFloat) latitude1
+              longitude1:(CGFloat) longitude1
+               latitude2:(CGFloat) latitude2
+              longitude2:(CGFloat) longitude2
 {
     self = [super init];
     if (self) {
@@ -73,15 +73,13 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 - (BOOL) validateCoordinates
 {
     // Validates latitude and logitude coordinates. Latittude must be within -90 and 90 degrees. Longitude must be within -180 and 180.
-    
-    if (_latitude1 > 90 || _latitude2 > 90 || _latitude1 < -90 || _latitude2 < -90) {
-    
-        NSLog(@"Latitude out of range. (A latitude not be greater then +/- 90 degrees");
+
+    if (_latitude1 > 90 || _latitude1 < -90 || _latitude2 > 90 || _latitude2 < -90) {
+        NSLog(@"Latitude of %f out of range. (A latitude not be greater then +/- 90 degrees", _latitude2);
         return 0;
     }
     
-    if (_longitude1 > 180 || _longitude2 > 180 || _longitude1 < -180 || _longitude2 < -180) {
-        
+    if (_longitude1 > 180 || _longitude1 < -180 || _longitude2 > 180 || _longitude2 < -180) {
         NSLog(@"Longitude out of range. (A longitude can not be greater then +/- 180");
         return 0;
     }
