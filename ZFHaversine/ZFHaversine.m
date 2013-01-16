@@ -77,8 +77,6 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
     if (_latitude1 > 90 || _latitude2 > 90 || _latitude1 < -90 || _latitude2 < -90) {
     
         NSLog(@"Latitude out of range. (A latitude not be greater then +/- 90 degrees");
-        //NSError *error = nil;
-        
         return 0;
     }
     
@@ -95,7 +93,6 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 #pragma mark - Distance & Bearing Formulas
 - (CGFloat) haversineDistance
 {
-    
     // Implementaion of the haversine formula returning distance in kilos.
     
     CGFloat a = sinf(_longitudeDeltaToRadians/2) * sinf(_latitudeDeltaToRadians/2) + sinf(_longitudeDeltaToRadians/2) * sinf(_longitudeDeltaToRadians/2) * cosf(_latitude1ToRadians) * cos (_latitude2ToRadians);
@@ -107,7 +104,6 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 
 - (CGFloat) sphericalLawOfCosinesDistance
 {
-    
     // Alternative formula for finding distance (returned in kilos) using the Sperical Law of Cosines
     
     CGFloat distanceInKilos = acosf(sinf(_latitude1ToRadians) * sinf(_latitude2ToRadians) + cosf(_latitude1ToRadians) * cosf(_latitude2ToRadians) * cosf(_longitudeDeltaToRadians)) * EARTH_RADIUS_IN_KILOS;
@@ -118,7 +114,6 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 
 - (CGFloat) calculateInitialBearing
 {
-    
     // Calculating initial bearing
     
     CGFloat x = sinf(_longitude2ToRadians - _longitude1ToRadians) * cosf(_latitude2ToRadians);
@@ -131,7 +126,6 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 
 - (CGFloat) calculateFinalBearing
 {
-    
     // Calculating final bearing
     
     CGFloat x = sinf(_longitude2ToRadians - _longitude1ToRadians) * cosf(_latitude2ToRadians);
@@ -144,6 +138,8 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 
 
 #pragma mark - Distance Return Methods
+// Each return method validates coordinates and checks if the default Haversine formula have been changed to Spherical Law Of Cosines.
+// Distance is then converted from kilos to unit of measure.
 - (CGFloat) kilos
 {    
     if ([self validateCoordinates])
@@ -190,12 +186,16 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 #pragma mark - Bearing Return Methods
 - (CGFloat) initialBearing
 {
-    return [self calculateInitialBearing];
+    if ([self validateCoordinates])
+        return [self calculateInitialBearing];
+    return 0;
 }
 
 - (CGFloat) finalBearing
 {
-    return [self calculateFinalBearing];
+    if ([self validateCoordinates])
+        return [self calculateFinalBearing];
+    return 0;
 }
 
 @end
