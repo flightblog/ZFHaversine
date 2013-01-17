@@ -32,6 +32,7 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 
 @interface ZFHaversine ()
 @property CGFloat longitudeDeltaToRadians;
+@property CGFloat longitudeDeltaToRadiansReversed;
 @property CGFloat latitudeDeltaToRadians;
 @property CGFloat latitude1ToRadians;
 @property CGFloat latitude2ToRadians;
@@ -60,6 +61,7 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
         
         // Converting necessary varibles to radians
         _longitudeDeltaToRadians = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
+        _longitudeDeltaToRadiansReversed = (_longitude1 - _longitude2) * DEGRESS_TO_RADIANS;
         _latitudeDeltaToRadians = (_latitude2 - _latitude1) * DEGRESS_TO_RADIANS;
         _latitude1ToRadians = _latitude1 * DEGRESS_TO_RADIANS;
         _latitude2ToRadians = _latitude2 * DEGRESS_TO_RADIANS;
@@ -114,24 +116,24 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 {
     // Calculating initial bearing
     
-    CGFloat x = sinf(_longitude2ToRadians - _longitude1ToRadians) * cosf(_latitude2ToRadians);
-    CGFloat y = cosf(_latitude1ToRadians) * sinf(_latitude2ToRadians) - sinf(_latitude1ToRadians) * cosf(_latitude2ToRadians) * cosf(_longitude2ToRadians - _longitude1ToRadians);
+    CGFloat x = sinf(_longitudeDeltaToRadians) * cosf(_latitude2ToRadians);
+    CGFloat y = cosf(_latitude1ToRadians) * sinf(_latitude2ToRadians) - sinf(_latitude1ToRadians) * cosf(_latitude2ToRadians) * cosf(_longitudeDeltaToRadians);
     
-    CGFloat radians = atan2f(x, y);
+    CGFloat results = atan2(-x,-y)/M_PI * 180 + 180;
     
-    return (radians * RADIANS_TO_DEGRESS) + 360;
+    return results;
 }
 
 - (CGFloat) calculateFinalBearing
 {
     // Calculating final bearing
     
-    CGFloat x = sinf(_longitude2ToRadians - _longitude1ToRadians) * cosf(_latitude2ToRadians);
-    CGFloat y = cosf(_latitude1ToRadians) * sinf(_latitude2ToRadians) - sinf(_latitude1ToRadians) * cosf(_latitude2ToRadians) * cosf(_longitude2ToRadians - _longitude1ToRadians);
+    CGFloat x = sinf(_longitudeDeltaToRadiansReversed) * cosf(_latitude2ToRadians);
+    CGFloat y = cosf(_latitude2ToRadians) * sinf(_latitude1ToRadians) - sinf(_latitude2ToRadians) * cosf(_latitude1ToRadians) * cosf(_longitudeDeltaToRadiansReversed);
     
-    CGFloat radians = atan2f(x, y);
+    CGFloat results = atan2(-x,-y)/M_PI * 180 + 360;
     
-    return (radians * RADIANS_TO_DEGRESS) + 180;
+    return results;
 }
 
 

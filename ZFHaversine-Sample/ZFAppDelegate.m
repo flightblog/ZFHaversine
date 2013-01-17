@@ -31,6 +31,7 @@
     
     // Test coordinates
     
+    /*
     // Nantucket Memorial Airport (KACK)
     CGFloat latitude1 = 41.2531111;
     CGFloat longitude1 = -70.0603056;
@@ -38,14 +39,28 @@
     // Block Island Airport (KBID)
     CGFloat latitude2 = 41.1681111;
     CGFloat longitude2 =  -71.5778333;
-
-//    // Logan International Airport (KBOS)
-//    CGFloat latitude1 = 42.3629722;
-//    CGFloat longitude1 = -71.0064167;
-//    
-//    // San Francisco International (KSFO)
-//    CGFloat latitude2 = 37.6191050;
-//    CGFloat longitude2 = -122.3752372;
+     */
+    
+    // Logan International Airport (KBOS)
+    CGFloat latitude1 = 42.3629722;
+    CGFloat longitude1 = -71.0064167;
+    
+    /*
+    // San Francisco International (KSFO)
+    CGFloat latitude2 = 37.6191050;
+    CGFloat longitude2 = -122.3752372;
+    */
+    
+    /*
+    // Raleigh Durham International Airport (KRDU)
+    CGFloat latitude2 = 35.8776389;
+    CGFloat longitude2 =  -78.7874722;
+     */
+     
+    // Hong Kong International Airport
+    CGFloat latitude2 = 22.3306653;
+    CGFloat longitude2 = 114.2021512;
+    
     
     // Setup with
 //    ZFHaversine *distanceAndBearing = [[ZFHaversine alloc] init];
@@ -74,7 +89,7 @@
     
     // Results for Bearing
     NSLog(@"Initial Bearing %f", [distanceAndBearing initialBearing]);
-    NSLog(@"Initial Bearing %f", [distanceAndBearing finalBearing]);
+    NSLog(@"Final Bearing %f", [distanceAndBearing finalBearing]);
     
     
     self.window.backgroundColor = [UIColor whiteColor];
