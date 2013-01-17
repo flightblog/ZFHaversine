@@ -126,7 +126,7 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 
 - (CGFloat) calculateFinalBearing
 {
-    // Calculating final bearing
+    // Calculating final bearing - To find the final bearing an initial bearing is taken from the second set of GPS coordinates and the heading is reversed.
     
     CGFloat x = sinf(_longitudeDeltaToRadiansReversed) * cosf(_latitude2ToRadians);
     CGFloat y = cosf(_latitude2ToRadians) * sinf(_latitude1ToRadians) - sinf(_latitude2ToRadians) * cosf(_latitude1ToRadians) * cosf(_longitudeDeltaToRadiansReversed);
@@ -138,10 +138,12 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 
 
 #pragma mark - Distance Return Methods
-// Each return method validates coordinates and checks if the default Haversine formula have been changed to Spherical Law Of Cosines.
-// Distance is then converted from kilos to unit of measure.
+
+/** Each return method validates coordinates and checks if the default Haversine formula have been changed to Spherical Law Of Cosines.
+ Distance is then converted from base kilos to the unit of measure defined by each method. */
+
 - (CGFloat) kilos
-{    
+{
     if ([self validateCoordinates])
         return _formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] : [self haversineDistance];
     return 0;
@@ -184,6 +186,9 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 
 
 #pragma mark - Bearing Return Methods
+
+/** Each return method validates coordinates before calculating bearing. */
+
 - (CGFloat) initialBearing
 {
     if ([self validateCoordinates])
