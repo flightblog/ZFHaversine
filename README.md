@@ -61,7 +61,7 @@ plane trigonometry. (http://en.wikipedia.org/wiki/Spherical_law_of_cosines)
     
     // Results for Initial and Final Bearing
     NSLog(@"Initial Bearing %f", [distanceAndBearing initialBearing]);
-    NSLog(@"Initial Bearing %f", [distanceAndBearing finalBearing]);
+    NSLog(@"Final Bearing %f", [distanceAndBearing finalBearing]);
     
     
 
