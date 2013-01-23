@@ -39,7 +39,7 @@ typedef NS_ENUM (NSInteger, DistanceFormula) {
 @property (nonatomic) DistanceFormula formulaMode;
 
 /** Initializer for setting coordinates
- * @param latitude/longitde coordinates for location 1 and location 2
+ * @param latitude/longitude coordinates for location 1 and location 2
  */
 - (id) initWithLatitude1:(CGFloat) latitude1
               longitude1:(CGFloat) longitude1

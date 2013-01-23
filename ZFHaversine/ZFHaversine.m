@@ -59,7 +59,7 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
         _latitude2 = latitude2;
         _longitude2 = longitude2;
         
-        // Converting necessary varibles to radians
+        // Converting necessary variables to radians
         _longitudeDeltaToRadians = (_longitude2 - _longitude1) * DEGRESS_TO_RADIANS;
         _longitudeDeltaToRadiansReversed = (_longitude1 - _longitude2) * DEGRESS_TO_RADIANS;
         _latitudeDeltaToRadians = (_latitude2 - _latitude1) * DEGRESS_TO_RADIANS;
@@ -93,7 +93,7 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 #pragma mark - Distance & Bearing Formulas
 - (CGFloat) haversineDistance
 {
-    // Implementaion of the haversine formula returning distance in kilos.
+    // Implementation of the haversine formula returning distance in kilos.
     
     CGFloat a = sinf(_longitudeDeltaToRadians/2) * sinf(_latitudeDeltaToRadians/2) + sinf(_longitudeDeltaToRadians/2) * sinf(_longitudeDeltaToRadians/2) * cosf(_latitude1ToRadians) * cos (_latitude2ToRadians);
     
