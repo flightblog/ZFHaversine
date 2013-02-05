@@ -13,6 +13,10 @@ In spherical trigonometry, the law of cosines (also called the cosine rule for s
 relating the sides and angles of spherical triangles, analogous to the ordinary law of cosines from 
 plane trigonometry. (http://en.wikipedia.org/wiki/Spherical_law_of_cosines)
 
+### Equirectangular Approximation
+"If performance is an issue and accuracy less important, for small distances Pythagoras’ theorem can be used on an equirectangular projection." \- http://www.movable-type.co.uk/scripts/latlong.html
+
+A performance comparison of the different formulae using JavaScript: http://jsperf.com/haversine-vs-spherical-law-of-cosines-vs-equirectangula)
 
 ### Usage ###
     
@@ -50,7 +54,12 @@ plane trigonometry. (http://en.wikipedia.org/wiki/Spherical_law_of_cosines)
     
     // __Optional__: Change the default distance formula from Haversine to the Spherical Law Of Cosines
     [distanceAndBearing setFormulaMode:sphericalFormula];
-    
+
+    // ... or the equirectangular approximation distance formula
+    // Note: with this formula, the further apart the two points are,
+    // the more incorrect the distance gets
+    //[distanceAndBearing setFormulaMode:equirectangularFormula];
+
     // Results for Distance    
     NSLog(@"Kilos %f", [distanceAndBearing kilos]);
     NSLog(@"Meters %f", [distanceAndBearing meters]);
