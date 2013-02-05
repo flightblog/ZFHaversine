@@ -60,7 +60,17 @@
     // Hong Kong International Airport
     CGFloat latitude2 = 22.3306653;
     CGFloat longitude2 = 114.2021512;
+
+    /*
+    // Note: Matlock and Northampton are two towns 234.5km apart
+    // Matlock, United Kingdom
+    CGFloat latitude1 = 54.333333;
+    CGFloat longitude1 = -1.433333;
     
+    // Northampton, United Kingdom
+    CGFloat latitude2 = 52.25;
+    CGFloat longitude2 = -0.883333;
+     */
     
     // Setup with
 //    ZFHaversine *distanceAndBearing = [[ZFHaversine alloc] init];
@@ -78,6 +88,11 @@
     
     // Optional: Change the default distance formula from Haversine to the Spherical Law Of Cosines
     [distanceAndBearing setFormulaMode:sphericalFormula];
+    
+    // ... or the equirectangular approximation distance formula
+    // Note: with this formula, the further apart the two points are,
+    // the more incorrect the distance gets
+    //[distanceAndBearing setFormulaMode:equirectangularFormula];
     
     // Results for Distance    
     NSLog(@"Kilos %f", [distanceAndBearing kilos]);
