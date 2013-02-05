@@ -16,7 +16,7 @@ plane trigonometry. (http://en.wikipedia.org/wiki/Spherical_law_of_cosines)
 ### Equirectangular Approximation
 "If performance is an issue and accuracy less important, for small distances Pythagoras’ theorem can be used on an equirectangular projection." \- http://www.movable-type.co.uk/scripts/latlong.html
 
-A performance comparison of the different formulae using JavaScript: http://jsperf.com/haversine-vs-spherical-law-of-cosines-vs-equirectangula)
+A performance comparison of the different formulae using JavaScript: http://jsperf.com/haversine-vs-spherical-law-of-cosines-vs-equirectangula
 
 ### Usage ###
     
