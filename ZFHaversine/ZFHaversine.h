@@ -26,7 +26,8 @@
 
 typedef NS_ENUM (NSInteger, DistanceFormula) {
 	haversineFormula,
-	sphericalFormula
+	sphericalFormula,
+	equirectangularFormula
 };
 
 /** GPS Coordinates for location 1 & location 2 */
