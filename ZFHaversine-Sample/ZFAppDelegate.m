@@ -33,11 +33,7 @@
     
     /*
     // Nantucket Memorial Airport (KACK)
-    CGFloat latitude1 = 41.2531111;
-    CGFloat longitude1 = -70.0603056;
-    
-    // Block Island Airport (KBID)
-    CGFloat latitude2 = 41.1681111;
+    CGFloat latitude1 = 41.2531111;6
     CGFloat longitude2 =  -71.5778333;
      */
     
