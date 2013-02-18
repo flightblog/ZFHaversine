@@ -111,6 +111,18 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
     return distanceInKilos;
 }
 
+- (CGFloat) equirectangularDistance
+{
+    // Another alternative formula for finding distance (returned in kilos) using the equirectangular approximation distance formula
+    // Note: with this formula, the further apart the two points are,
+    // the more incorrect the distance gets
+
+    CGFloat p1 = (_longitude1ToRadians - _longitude2ToRadians) * cosf((_latitude1ToRadians + _latitude2ToRadians) / 2);
+    CGFloat p2 = _latitude1ToRadians - _latitude2ToRadians;
+    CGFloat distanceInKilos = EARTH_RADIUS_IN_KILOS * sqrt(pow(p1, 2) + pow(p2, 2));
+    
+    return distanceInKilos;
+}
 
 - (CGFloat) calculateInitialBearing
 {
@@ -144,43 +156,51 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 
 - (CGFloat) kilos
 {
-    if ([self validateCoordinates])
-        return _formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] : [self haversineDistance];
+    if ([self validateCoordinates]) {
+        switch (_formulaMode) {
+            case sphericalFormula:
+                return [self sphericalLawOfCosinesDistance];
+            case equirectangularFormula:
+                return [self equirectangularDistance];
+            default:
+                return [self haversineDistance];
+        }
+    }
     return 0;
 }
 
 - (CGFloat) meters
 {
     if ([self validateCoordinates])
-        return (_formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] : [self haversineDistance]) * KILOS_TO_METERS;
+        return [self kilos] * KILOS_TO_METERS;
     return 0;
 }
 
 - (CGFloat) nauticalMiles
 {
     if ([self validateCoordinates])
-        return (_formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] : [self haversineDistance]) * KILOS_TO_NAUTICAL_MILES;
+        return [self kilos] * KILOS_TO_NAUTICAL_MILES;
     return 0;
 }
 
 - (CGFloat) miles
 {
     if ([self validateCoordinates])
-        return (_formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] : [self haversineDistance]) * KILOS_TO_MILES;
+        return [self kilos] * KILOS_TO_MILES;
     return 0;
 }
 
 - (CGFloat) yards
 {
     if ([self validateCoordinates])
-        return (_formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] : [self haversineDistance]) * KILOS_TO_YARDS;
+        return [self kilos] * KILOS_TO_YARDS;
     return 0;
 }
 
 - (CGFloat) feet
 {
     if ([self validateCoordinates])
-        return (_formulaMode == sphericalFormula ? [self sphericalLawOfCosinesDistance] : [self haversineDistance]) * KILOS_TO_FEET;
+        return [self kilos] * KILOS_TO_FEET;
     return 0;
 }
 
