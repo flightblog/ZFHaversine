@@ -23,7 +23,7 @@
 #import "ZFHaversine.h"
 static const CGFloat EARTH_RADIUS_IN_KILOS = 6372.797560856;
 static const CGFloat DEGRESS_TO_RADIANS = M_PI/180.0;
-static const CGFloat RADIANS_TO_DEGRESS = 180.0/M_PI;
+__unused static const CGFloat RADIANS_TO_DEGRESS = 180.0/M_PI;
 static const CGFloat KILOS_TO_METERS = 1000;
 static const CGFloat KILOS_TO_NAUTICAL_MILES = 0.539957;
 static const CGFloat KILOS_TO_MILES = 0.621371;
