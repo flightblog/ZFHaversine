@@ -42,12 +42,12 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 
 @implementation ZFHaversine
 
-- (id) init
+- (instancetype) init
 {
     return [self initWithLatitude1:0 longitude1:0 latitude2:0 longitude2:0];
 }
 
-- (id) initWithLatitude1:(CGFloat) latitude1
+- (instancetype) initWithLatitude1:(CGFloat) latitude1
               longitude1:(CGFloat) longitude1
                latitude2:(CGFloat) latitude2
               longitude2:(CGFloat) longitude2

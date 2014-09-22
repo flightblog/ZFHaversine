@@ -42,29 +42,29 @@ typedef NS_ENUM (NSInteger, DistanceFormula) {
 /** Initializer for setting coordinates
  * @param latitude/longitude coordinates for location 1 and location 2
  */
-- (id) initWithLatitude1:(CGFloat) latitude1
+- (instancetype) initWithLatitude1:(CGFloat) latitude1
               longitude1:(CGFloat) longitude1
                latitude2:(CGFloat) latitude2
-              longitude2:(CGFloat) longitude2;
+              longitude2:(CGFloat) longitude2 NS_DESIGNATED_INITIALIZER;
 
 /** Return methods for distance 
  * @return distance for each unit of measure
  */
-- (CGFloat) kilos;
-- (CGFloat) meters;
-- (CGFloat) nauticalMiles;
-- (CGFloat) miles;
-- (CGFloat) yards;
-- (CGFloat) feet;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGFloat kilos;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGFloat meters;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGFloat nauticalMiles;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGFloat miles;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGFloat yards;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGFloat feet;
 
 /** Initial heading giving set GPS coordinates
  * @return initial bearing in degrees
  */
-- (CGFloat) initialBearing;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGFloat initialBearing;
 
 /** Final heading giving set GPS coordinates
  * @return final bearing in degrees
  */
-- (CGFloat) finalBearing;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGFloat finalBearing;
 
 @end
