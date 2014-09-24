@@ -25,9 +25,9 @@
 @interface ZFHaversine : NSObject
 
 typedef NS_ENUM (NSInteger, DistanceFormula) {
-	haversineFormula,
-	sphericalFormula,
-	equirectangularFormula
+    haversineFormula,
+    sphericalFormula,
+    equirectangularFormula
 };
 
 /** GPS Coordinates for location 1 & location 2 */
@@ -42,12 +42,12 @@ typedef NS_ENUM (NSInteger, DistanceFormula) {
 /** Initializer for setting coordinates
  * @param latitude/longitude coordinates for location 1 and location 2
  */
-- (instancetype) initWithLatitude1:(CGFloat) latitude1
-              longitude1:(CGFloat) longitude1
-               latitude2:(CGFloat) latitude2
-              longitude2:(CGFloat) longitude2 NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithLatitude1:(CGFloat) latitude1
+                       longitude1:(CGFloat) longitude1
+                        latitude2:(CGFloat) latitude2
+                       longitude2:(CGFloat) longitude2 NS_DESIGNATED_INITIALIZER;
 
-/** Return methods for distance 
+/** Return methods for distance
  * @return distance for each unit of measure
  */
 @property (NS_NONATOMIC_IOSONLY, readonly) CGFloat kilos;

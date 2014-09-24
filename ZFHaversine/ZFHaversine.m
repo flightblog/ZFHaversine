@@ -48,9 +48,9 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 }
 
 - (instancetype) initWithLatitude1:(CGFloat) latitude1
-              longitude1:(CGFloat) longitude1
-               latitude2:(CGFloat) latitude2
-              longitude2:(CGFloat) longitude2
+                        longitude1:(CGFloat) longitude1
+                         latitude2:(CGFloat) latitude2
+                        longitude2:(CGFloat) longitude2
 {
     self = [super init];
     if (self) {
