@@ -95,9 +95,9 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
 {
     // Implementation of the haversine formula returning distance in kilos.
     
-    CGFloat a = sinf(_longitudeDeltaToRadians/2) * sinf(_latitudeDeltaToRadians/2) + sinf(_longitudeDeltaToRadians/2) * sinf(_longitudeDeltaToRadians/2) * cosf(_latitude1ToRadians) * cos (_latitude2ToRadians);
+    CGFloat a = sinf(_latitudeDeltaToRadians/2) * sinf(_latitudeDeltaToRadians/2) + sinf(_longitudeDeltaToRadians/2) * sinf(_longitudeDeltaToRadians/2) * cosf(_latitude1ToRadians) * cosf (_latitude2ToRadians);
     
-    CGFloat c = 2.0 * atan2(sqrt(a), sqrt(1-a));
+    CGFloat c = 2.0 * asinf(sqrt(a));
   
     return EARTH_RADIUS_IN_KILOS * c;
 }
