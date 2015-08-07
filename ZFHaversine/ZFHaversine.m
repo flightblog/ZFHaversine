@@ -66,7 +66,7 @@ static const CGFloat KILOS_TO_FEET = 3280.84;
         _latitude1ToRadians = _latitude1 * DEGRESS_TO_RADIANS;
         _latitude2ToRadians = _latitude2 * DEGRESS_TO_RADIANS;
         _longitude1ToRadians = _longitude1 * DEGRESS_TO_RADIANS;
-        _longitude2ToRadians = _longitude1 * DEGRESS_TO_RADIANS;
+        _longitude2ToRadians = _longitude2 * DEGRESS_TO_RADIANS;
     }
     return self;
 }
